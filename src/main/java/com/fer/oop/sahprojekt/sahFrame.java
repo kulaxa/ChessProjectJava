@@ -102,7 +102,7 @@ public class sahFrame extends JFrame {
                                 }
 
                             } else {
-                                if (clickedPiece != null) {
+                                if (clickedPiece != null && isPieceSelected == true) {
 
                                     clickedPanel = (JPanel) e.getComponent();
                                     if (!possibleMoves.isEmpty()) {
@@ -155,6 +155,7 @@ public class sahFrame extends JFrame {
                                                         clickedPanel.remove(eatenPiece);
                                                         eatenPiecesList.add(eatenPiece);
                                                         refreshEatenPanel();
+                                                        
                                                     }
 
                                                 }
@@ -233,7 +234,7 @@ public class sahFrame extends JFrame {
                                 }
 
                             } else {
-                                if (clickedPiece != null) {
+                                if (clickedPiece != null && isPieceSelected == true) {
 
                                     clickedPanel = (JPanel) e.getComponent();
                                     if (!possibleMoves.isEmpty()) {
@@ -286,6 +287,7 @@ public class sahFrame extends JFrame {
                                                         clickedPanel.remove(eatenPiece);
                                                         eatenPiecesList.add(eatenPiece);
                                                         refreshEatenPanel();
+                                                        
                                                     }
                                                 }
                                                 isPieceSelected = false;
