@@ -20,7 +20,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingWorker;
+
 
 /**
  *
@@ -305,28 +305,8 @@ public class sahFrame extends JFrame {
             }
         }
         addPiecesToBoard();
-      //  System.out.println("num of rooks" + pieceList.stream().filter(p -> p instanceof Rook).count());
-        
 
-//        File file = new File("whtepawn - copy.png");
-//        BufferedImage image = ImageIO.read(file);
-//        ImageIcon icon = new ImageIcon(image);
-//
-//        Pawn pawn1 = new Pawn(new Point(0, 0), com.fer.oop.sahprojekt.Color.WHITE);
-//        Pawn pawn2 = new Pawn(new Point(1, 1), com.fer.oop.sahprojekt.Color.BLACK);
-//        pawn2.setIcon(icon);
-//        pieceList.add(pawn2);
-//        fieldList.get(9).add(pawn2);
-//
-//        // pawn1.addMouseListener(pawn1);
-//        pawn1.setIcon(icon);
-//
-//        fieldList.get(0).add(pawn1);
-//        pieceList.add(pawn1);
-//               File file = new File("whtepawn.png");
-//        BufferedImage image = ImageIO.read(file);
-//        ImageIcon icon  = new ImageIcon(image);
-        add(board);
+      add(board);
 
     }
 
