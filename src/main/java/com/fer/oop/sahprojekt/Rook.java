@@ -43,7 +43,7 @@ public class Rook extends ChessPiece {
 	public boolean isRosada() {
 		return rosada;
 	}
-	public void setRosada(boolean leftUp) {
+	public void setRosada(boolean rosada) {
 		this.rosada = rosada;;
 	}
 	
