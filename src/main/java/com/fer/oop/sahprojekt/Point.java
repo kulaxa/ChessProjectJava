@@ -67,6 +67,11 @@ public class Point {
     public String toString() {
         return "Point{" + "x=" + x + ", y=" + y + '}';
     }
+    
+    public static Point addTwoPoints(Point point1, Point point2){  
+        
+        return new Point(point1.x + point2.x, point1.y + point2.y);
+        }
 
   
     
