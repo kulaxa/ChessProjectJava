@@ -50,12 +50,10 @@ public class Rook extends ChessPiece {
     }
 
     private List<Integer> checkMoves() {
-<<<<<<< Updated upstream
+
     	System.out.println("CheckMoves");
         // int position = ChessPiece.pointToInt(this.getPosition());
-=======
-        
->>>>>>> Stashed changes
+
         int left = 0, right = 0, up = 0, down = 0;
 
         boolean switchSide = false;

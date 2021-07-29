@@ -77,7 +77,6 @@ public class sahFrame extends JFrame {
                                 clickedPiece = (ChessPiece) (((JPanel) e.getSource()).getComponents()[0]);
 
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
-<<<<<<< Updated upstream
                                 	
                                     currentPanel = (JPanel)e.getSource(); 
                                     isPieceSelected = true;
@@ -88,13 +87,11 @@ public class sahFrame extends JFrame {
                                     	
                                     	fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece ->piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
                                     }
-                                    
-=======
+
                                     currentPanel = (JPanel) e.getSource(); //new code
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
 
->>>>>>> Stashed changes
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
 
@@ -137,15 +134,12 @@ public class sahFrame extends JFrame {
                                                 if (clickedPiece instanceof Rook) {
                                                     Rook temp = (Rook) clickedPiece;
                                                     temp.setAlreadyMoved(true);
-                                                }
-<<<<<<< Updated upstream
+                        
                                                 if (clickedPiece instanceof King) {
                                                    King temp = (King) clickedPiece;
                                                     temp.setAlreadyMoved(true);
                                                 }
-                                              
-=======
->>>>>>> Stashed changes
+                      
 
                                                 clickedPanel.add(clickedPiece);
                                                 Game.getNextTurnColor();
@@ -483,7 +477,6 @@ public class sahFrame extends JFrame {
                 rook.setIcon(iconRookBlack);
                 pieceList.add(rook);
                 fieldList.get(56 + 7).add(rook);
-<<<<<<< Updated upstream
                 }
 //                if(j==0){
 //                    Bishop bishop = new Bishop(new Point(2,0), com.fer.oop.sahprojekt.Color.WHITE);
@@ -565,7 +558,7 @@ public class sahFrame extends JFrame {
                     pieceList.add(knight);
                     fieldList.get(6+7*8).add(knight);
                 }
-=======
+
             }
             if (j == 0) {
                 Bishop bishop = new Bishop(new Point(2, 0), com.fer.oop.sahprojekt.Color.WHITE);
@@ -643,7 +636,6 @@ public class sahFrame extends JFrame {
                 pieceList.add(knight);
                 fieldList.get(6 + 7 * 8).add(knight);
             }
->>>>>>> Stashed changes
         }
 
     }
