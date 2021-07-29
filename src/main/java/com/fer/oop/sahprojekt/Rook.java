@@ -22,23 +22,35 @@ public class Rook extends ChessPiece {
     private ImageIcon icon;
     private ChessPiece clickedRook;
     private boolean alreadyMoved;
+    private boolean rosada;
 
     public Rook(Point position, Color color) {
         super(position, color);
         possibleMoves = new LinkedList<>();
         alreadyMoved = false;
+        rosada = false;
 
     }
     public void setAlreadyMoved(boolean alreadyMoved) {
         this.alreadyMoved = alreadyMoved;
     }
+   
 
-    @Override
+    public boolean isRosada() {
+		return rosada;
+	}
+	public void setRosada(boolean leftUp) {
+		this.rosada = rosada;;
+	}
+	
+	@Override
     public List<Integer> getPossibleMoves() {
+		System.out.println(" ");
         return checkMoves();
     }
 
     private List<Integer> checkMoves() {
+    	System.out.println("CheckMoves");
         // int position = ChessPiece.pointToInt(this.getPosition());
         int left = 0, right = 0, up = 0, down = 0;
 
@@ -147,10 +159,66 @@ public class Rook extends ChessPiece {
             possibleMoves.add(num);
         }
         //System.out.print("rook possible move: ");
+        
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 0) {
+        		if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
+        			System.out.println(((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved());
+        			int j = 0;
+        			for(int i = 1; i < 4; i++) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+        			if(j == 0) {
+        				rosada = true;
+        				System.out.println("rosada: " + rosada);
+        			}
+        			
+        		}
+        		
+        		
+        	}
+        	
+        }
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 7) {
+        		int j = 0;
+        		for(int i = 6; i > 4; i--) {
+        			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+        				j++;
+        		}
+        	}
+        	
+        }
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 56) {
+        		int j = 0;
+        		for(int i = 57; i < 60; i++) {
+        			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+        				j++;
+        		}
+        		
+        	}
+        	
+        }
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 63) {
+        		int j = 0;
+        		for(int i = 62; i > 60; i--) {
+        			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+        				j++;
+        		}
+        		
+        	
+        	}
+        }	
+        
         possibleMoves.forEach(move -> System.out.print(" " + move));
+        
         return possibleMoves;
 
     }
+    
 
     @Override
     public void mouseClicked(MouseEvent e) {
