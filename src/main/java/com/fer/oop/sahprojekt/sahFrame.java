@@ -479,12 +479,12 @@ public class sahFrame extends JFrame {
                 
                 if(j==1){
                     Knight knight = new Knight(new Point(1,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    knight.setIcon(iconKnightWhite);
+                    knight.setIcon(iconKnightBlack);
                     pieceList.add(knight);
                     fieldList.get(1+7*8).add(knight);
                     
                      knight = new Knight(new Point(6,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    knight.setIcon(iconKnightWhite);
+                    knight.setIcon(iconKnightBlack);
                     pieceList.add(knight);
                     fieldList.get(6+7*8).add(knight);
                 }
