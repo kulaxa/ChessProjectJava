@@ -21,11 +21,16 @@ public class Rook extends ChessPiece {
     private List<Integer> possibleMoves;
     private ImageIcon icon;
     private ChessPiece clickedRook;
+    private boolean alreadyMoved;
 
     public Rook(Point position, Color color) {
         super(position, color);
         possibleMoves = new LinkedList<>();
+        alreadyMoved = false;
 
+    }
+    public void setAlreadyMoved(boolean alreadyMoved) {
+        this.alreadyMoved = alreadyMoved;
     }
 
     @Override
