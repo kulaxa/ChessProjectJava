@@ -27,7 +27,7 @@ public class Main {
                     
                   //  test frame = new test();
                     frame.setVisible(true);
-                frame.setBounds(100,100,700,700);
+                frame.setBounds(100,100,1200,900);
                 frame.setTitle("Šah xdddd");
                 
                

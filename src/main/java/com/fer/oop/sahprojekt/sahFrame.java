@@ -5,8 +5,13 @@
  */
 package com.fer.oop.sahprojekt;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -21,7 +26,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
 /**
  *
  * @author jelena
@@ -31,6 +35,11 @@ public class sahFrame extends JFrame {
     private JPanel board = new JPanel();
     private static List<JPanel> fieldList = new ArrayList<>();
     private static List<ChessPiece> pieceList = new ArrayList<>();
+
+    private JPanel eatenPiecesPanel = new JPanel();
+    private JPanel eatenPiecesWhitePanel = new JPanel();
+    private JPanel eatenPiecesBlackPanel = new JPanel();
+    private List<ChessPiece> eatenPiecesList = new ArrayList<>();
 
     public static List<ChessPiece> getPieceList() {
         return pieceList;
@@ -58,6 +67,7 @@ public class sahFrame extends JFrame {
 
                 fieldList.add(field);
                 if ((i + j) % 2 == 0) {
+
                     field.setBackground(Color.black);
 
                     field.addMouseListener(new MouseListener() {
@@ -65,8 +75,9 @@ public class sahFrame extends JFrame {
                         public void mouseClicked(MouseEvent e) {
                             if ((((JPanel) e.getSource()).getComponents().length != 0) && isPieceSelected == false) {
                                 clickedPiece = (ChessPiece) (((JPanel) e.getSource()).getComponents()[0]);
-                              
+
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
+<<<<<<< Updated upstream
                                 	
                                     currentPanel = (JPanel)e.getSource(); 
                                     isPieceSelected = true;
@@ -78,9 +89,15 @@ public class sahFrame extends JFrame {
                                     	fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece ->piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
                                     }
                                     
+=======
+                                    currentPanel = (JPanel) e.getSource(); //new code
+                                    isPieceSelected = true;
+                                    possibleMoves = clickedPiece.getPossibleMoves();
+
+>>>>>>> Stashed changes
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
-                                            
+
                                             fieldList.get(i).setBackground(Color.BLUE);
 
                                         }
@@ -111,8 +128,6 @@ public class sahFrame extends JFrame {
                                         }
 
                                         for (Integer i : possibleMoves) {
-                                            
-                                            
 
                                             if (fieldList.indexOf(clickedPanel) == i) {
                                                 if (clickedPiece instanceof Pawn) {
@@ -123,28 +138,31 @@ public class sahFrame extends JFrame {
                                                     Rook temp = (Rook) clickedPiece;
                                                     temp.setAlreadyMoved(true);
                                                 }
+<<<<<<< Updated upstream
                                                 if (clickedPiece instanceof King) {
                                                    King temp = (King) clickedPiece;
                                                     temp.setAlreadyMoved(true);
                                                 }
                                               
+=======
+>>>>>>> Stashed changes
 
                                                 clickedPanel.add(clickedPiece);
                                                 Game.getNextTurnColor();
-                                                
-                                                
+
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
-                                                
+
                                                 clickedPanel.revalidate();
 
                                                 if (clickedPanel.getComponents().length != 0) {
                                                     ChessPiece eatenPiece = (ChessPiece) clickedPanel.getComponents()[0];
-                                                     if (eatenPiece != clickedPiece) {
-                                                     pieceList.remove(eatenPiece);
+                                                    if (eatenPiece != clickedPiece) {
+                                                        pieceList.remove(eatenPiece);
                                                         clickedPanel.remove(eatenPiece);
-                                                     }
-                                                    
-                                                    
+                                                        eatenPiecesList.add(eatenPiece);
+                                                        refreshEatenPanel();
+                                                    }
+
                                                 }
                                                 isPieceSelected = false;
 
@@ -181,12 +199,16 @@ public class sahFrame extends JFrame {
 
                         @Override
                         public void mouseEntered(MouseEvent e) {
-                            field.setBackground(Color.RED);
+                            if (field.getBackground() != Color.BLUE) {
+                                field.setBackground(Color.RED);
+                            }
                         }
 
                         @Override
                         public void mouseExited(MouseEvent e) {
-                            field.setBackground(Color.black);
+                            if (field.getBackground() != Color.BLUE) {
+                                field.setBackground(Color.black);
+                            }
                         }
                     });
 
@@ -198,15 +220,16 @@ public class sahFrame extends JFrame {
 
                             if ((((JPanel) e.getSource()).getComponents().length != 0) && isPieceSelected == false) {
                                 clickedPiece = (ChessPiece) (((JPanel) e.getSource()).getComponents()[0]);
-                              
+
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
-                                    
+
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
-                                           
+
                                             fieldList.get(i).setBackground(Color.BLUE);
+
                                         }
                                     }
                                 }
@@ -234,11 +257,9 @@ public class sahFrame extends JFrame {
                                             }
                                         }
 
-                                      
                                         for (Integer i : possibleMoves) {
 //                                             
 
-                                            
                                             if (fieldList.indexOf(clickedPanel) == i) {
                                                 if (clickedPiece instanceof Pawn) {
                                                     Pawn temp = (Pawn) clickedPiece;
@@ -253,20 +274,21 @@ public class sahFrame extends JFrame {
                                                     temp.setAlreadyMoved(true);
                                                 }
                                                 clickedPanel.add(clickedPiece);
-                                              
+
                                                 Game.getNextTurnColor();
 
-                                                
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
 
                                                 if (clickedPanel.getComponents().length != 0) {
-                                                    
+
                                                     ChessPiece eatenPiece = (ChessPiece) clickedPanel.getComponents()[0];
                                                     if (eatenPiece != clickedPiece) {
                                                         pieceList.remove(eatenPiece);
                                                         clickedPanel.remove(eatenPiece);
-                                                   }
+                                                        eatenPiecesList.add(eatenPiece);
+                                                        refreshEatenPanel();
+                                                    }
                                                 }
                                                 isPieceSelected = false;
                                             } else {
@@ -305,12 +327,16 @@ public class sahFrame extends JFrame {
 
                         @Override
                         public void mouseEntered(MouseEvent e) {
-                            field.setBackground(Color.RED);
+                            if (field.getBackground() != Color.BLUE) {
+                                field.setBackground(Color.RED);
+                            }
                         }
 
                         @Override
                         public void mouseExited(MouseEvent e) { //ovo je komentar
-                            field.setBackground(myBrown);
+                            if (field.getBackground() != Color.BLUE) {
+                                field.setBackground(myBrown);
+                            }
                         }
                     });
                 }
@@ -319,19 +345,56 @@ public class sahFrame extends JFrame {
 
             }
         }
+
         addPiecesToBoard();
 
-      add(board);
+        eatenPiecesPanel.setLayout(new GridLayout(2, 0));
+        eatenPiecesWhitePanel.setBackground(Color.WHITE);
+        eatenPiecesBlackPanel.setBackground(Color.BLACK);
+        eatenPiecesWhitePanel.setPreferredSize(new Dimension(400, 0));
+        eatenPiecesBlackPanel.setPreferredSize(new Dimension(400, 0));
+
+        eatenPiecesPanel.add(eatenPiecesWhitePanel);
+        eatenPiecesPanel.add(eatenPiecesBlackPanel);
+
+        add(eatenPiecesPanel, BorderLayout.EAST);
+        add(board);
 
     }
 
-    private void refreshFrame(JFrame frame) {
-        frame.revalidate();
+    private void refreshEatenPanel() {
+
+//        eatenPiecesBlackPanel.removeAll();
+//        eatenPiecesWhitePanel.removeAll();
+        int numOfEatenPiecesWhite
+                = (int) eatenPiecesList.stream().filter(piece -> piece.getColor() == com.fer.oop.sahprojekt.Color.WHITE).count();
+        int numOfEatenPiecesBlack
+                = (int) eatenPiecesList.stream().filter(piece -> piece.getColor() == com.fer.oop.sahprojekt.Color.BLACK).count();
+
+        System.out.println("eaten pieces: white: " + numOfEatenPiecesWhite + " black: " + numOfEatenPiecesBlack);
+        if (numOfEatenPiecesBlack != 0) {
+            eatenPiecesBlackPanel.setLayout(new GridLayout(0, numOfEatenPiecesWhite / 3 + 1));
+            System.out.println("Setting grid: " + "0 ," + (numOfEatenPiecesWhite / 3 + 1));
+        }
+        if (numOfEatenPiecesWhite != 0) {
+            eatenPiecesWhitePanel.setLayout(new GridLayout(0, numOfEatenPiecesBlack / 3 + 1));
+            System.out.println("Setting grid: " + "0 ," + (numOfEatenPiecesBlack / 3 + 1));
+        }
+        for (ChessPiece pic : eatenPiecesList) {
+            if (pic.getColor() == com.fer.oop.sahprojekt.Color.BLACK) {
+
+                eatenPiecesWhitePanel.add(pic);
+            } else {
+                eatenPiecesBlackPanel.add(pic);
+            }
+        }
+
     }
 
     private void addPiecesToBoard() throws IOException {
         //add pawns
-
+        int labelWidth = fieldList.get(0).getWidth();
+        int labelHeight = fieldList.get(0).getHeight();
         for (int j = 0; j < 2; j++) {
 
             File filewhite = new File("whtepawn - copy.png");
@@ -339,7 +402,6 @@ public class sahFrame extends JFrame {
             ImageIcon whiteicon = new ImageIcon(imagewhite);
 
             File fileblack = new File("black_pawn.png");
-
             BufferedImage imageblack = ImageIO.read(fileblack);
             ImageIcon blackicon = new ImageIcon(imageblack);
 
@@ -350,39 +412,38 @@ public class sahFrame extends JFrame {
             File filerookBlack = new File("rook_black.png");
             BufferedImage imageRookBlack = ImageIO.read(filerookBlack);
             ImageIcon iconRookBlack = new ImageIcon(imageRookBlack);
-            
-            File fileBishopWhite =new File("bishop_white.png");
+
+            File fileBishopWhite = new File("bishop_white.png");
             BufferedImage imageBishopWhite = ImageIO.read(fileBishopWhite);
             ImageIcon iconBishopWhite = new ImageIcon(imageBishopWhite);
-            
-             File fileBishopBlack =new File("bishop_black.png");
+
+            File fileBishopBlack = new File("bishop_black.png");
             BufferedImage imageBishopBlack = ImageIO.read(fileBishopBlack);
             ImageIcon iconBishopBlack = new ImageIcon(imageBishopBlack);
-            
-                         File fileQueenBlack =new File("queen_black.png");
+
+            File fileQueenBlack = new File("queen_black.png");
             BufferedImage imageQueenBlack = ImageIO.read(fileQueenBlack);
             ImageIcon iconQueenBlack = new ImageIcon(imageQueenBlack);
-            
-            File fileQueenWhite =new File("queen_white.png");
+
+            File fileQueenWhite = new File("queen_white.png");
             BufferedImage imageQueenWhite = ImageIO.read(fileQueenWhite);
             ImageIcon iconQueenWhite = new ImageIcon(imageQueenWhite);
-            
-            File fileKingBlack =new File("king_black.png");
+
+            File fileKingBlack = new File("king_black.png");
             BufferedImage imageKingBlack = ImageIO.read(fileKingBlack);
             ImageIcon iconKingBlack = new ImageIcon(imageKingBlack);
-            
-            File fileKingWhite =new File("king_white.png");
+
+            File fileKingWhite = new File("king_white.png");
             BufferedImage imageKingWhite = ImageIO.read(fileKingWhite);
             ImageIcon iconKingWhite = new ImageIcon(imageKingWhite);
-            
-            File fileKnightWhite =new File("knight_white.png");
+
+            File fileKnightWhite = new File("knight_white.png");
             BufferedImage imageKnightWhite = ImageIO.read(fileKnightWhite);
             ImageIcon iconKnightWhite = new ImageIcon(imageKnightWhite);
-            
-            File fileKnightBlack =new File("knight_black.png");
+
+            File fileKnightBlack = new File("knight_black.png");
             BufferedImage imageKnightBlack = ImageIO.read(fileKnightBlack);
             ImageIcon iconKnightBlack = new ImageIcon(imageKnightBlack);
-            
 
             for (int i = 0; i < 8; i++) {
                 if (j == 0) {
@@ -400,7 +461,7 @@ public class sahFrame extends JFrame {
                     fieldList.get(48 + i).add(pawn);
                 }
             }
-                if(j ==0){
+            if (j == 0) {
                 Rook rook = new Rook(new Point(0, 0), com.fer.oop.sahprojekt.Color.WHITE);
                 rook.setIcon(iconRookWhite);
                 pieceList.add(rook);
@@ -411,9 +472,9 @@ public class sahFrame extends JFrame {
                 rook.setIcon(iconRookWhite);
                 pieceList.add(rook);
                 fieldList.get(0 + 7).add(rook);
-                }
-                if(j==1){
-                  Rook rook = new Rook(new Point(0, 7), com.fer.oop.sahprojekt.Color.BLACK);
+            }
+            if (j == 1) {
+                Rook rook = new Rook(new Point(0, 7), com.fer.oop.sahprojekt.Color.BLACK);
                 rook.setIcon(iconRookBlack);
                 pieceList.add(rook);
                 fieldList.get(56 + 0).add(rook);
@@ -422,6 +483,7 @@ public class sahFrame extends JFrame {
                 rook.setIcon(iconRookBlack);
                 pieceList.add(rook);
                 fieldList.get(56 + 7).add(rook);
+<<<<<<< Updated upstream
                 }
 //                if(j==0){
 //                    Bishop bishop = new Bishop(new Point(2,0), com.fer.oop.sahprojekt.Color.WHITE);
@@ -503,9 +565,96 @@ public class sahFrame extends JFrame {
                     pieceList.add(knight);
                     fieldList.get(6+7*8).add(knight);
                 }
+=======
+            }
+            if (j == 0) {
+                Bishop bishop = new Bishop(new Point(2, 0), com.fer.oop.sahprojekt.Color.WHITE);
+                bishop.setIcon(iconBishopWhite);
+                pieceList.add(bishop);
+                fieldList.get(2).add(bishop);
+
+                bishop = new Bishop(new Point(5, 0), com.fer.oop.sahprojekt.Color.WHITE);
+                bishop.setIcon(iconBishopWhite);
+                pieceList.add(bishop);
+                fieldList.get(5).add(bishop);
+
+            }
+            if (j == 1) {
+                Bishop bishop = new Bishop(new Point(2, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                bishop.setIcon(iconBishopBlack);
+                pieceList.add(bishop);
+                fieldList.get(7 * 8 + 2).add(bishop);
+
+                bishop = new Bishop(new Point(5, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                bishop.setIcon(iconBishopBlack);
+                pieceList.add(bishop);
+                fieldList.get(7 * 8 + 5).add(bishop);
+            }
+
+            if (j == 0) {
+
+                Queen queen = new Queen(new Point(3, 0), com.fer.oop.sahprojekt.Color.WHITE);
+                queen.setIcon(iconQueenWhite);
+                pieceList.add(queen);
+                fieldList.get(3).add(queen);
+
+            }
+            if (j == 1) {
+                Queen queen = new Queen(new Point(3, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                queen.setIcon(iconQueenBlack);
+                pieceList.add(queen);
+                fieldList.get(8 * 7 + 3).add(queen);
+            }
+            if (j == 0) {
+
+                King king = new King(new Point(4, 0), com.fer.oop.sahprojekt.Color.WHITE);
+                king.setIcon(iconKingWhite);
+                pieceList.add(king);
+                fieldList.get(4).add(king);
+
+            }
+            if (j == 1) {
+                King king = new King(new Point(4, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                king.setIcon(iconKingBlack);
+                pieceList.add(king);
+                fieldList.get(8 * 7 + 4).add(king);
+            }
+
+            if (j == 0) {
+                Knight knight = new Knight(new Point(1, 0), com.fer.oop.sahprojekt.Color.WHITE);
+                knight.setIcon(iconKnightWhite);
+                pieceList.add(knight);
+                fieldList.get(1).add(knight);
+
+                knight = new Knight(new Point(6, 0), com.fer.oop.sahprojekt.Color.WHITE);
+                knight.setIcon(iconKnightWhite);
+                pieceList.add(knight);
+                fieldList.get(6).add(knight);
+            }
+
+            if (j == 1) {
+                Knight knight = new Knight(new Point(1, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                knight.setIcon(iconKnightBlack);
+                pieceList.add(knight);
+                fieldList.get(1 + 7 * 8).add(knight);
+
+                knight = new Knight(new Point(6, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                knight.setIcon(iconKnightBlack);
+                pieceList.add(knight);
+                fieldList.get(6 + 7 * 8).add(knight);
+            }
+>>>>>>> Stashed changes
         }
-            
-        
+
+    }
+
+    private Image fitimage(Image img, int w, int h) {
+        BufferedImage resizedimage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2 = resizedimage.createGraphics();
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(img, 0, 0, w, h, null);
+        g2.dispose();
+        return resizedimage;
     }
 
 }

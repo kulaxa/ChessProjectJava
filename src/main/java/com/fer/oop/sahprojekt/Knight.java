@@ -126,7 +126,7 @@ public class Knight extends ChessPiece {
         
         if(knightPoint.getX()+ movePoint.getX() <=7 && knightPoint.getX() + movePoint.getX() >=0 &&
                 knightPoint.getY()+ movePoint.getY() <=7 && knightPoint.getY() + movePoint.getY() >=0){
-            System.out.println("Good move: "+ movePoint);
+           
             return false;
         }
         
