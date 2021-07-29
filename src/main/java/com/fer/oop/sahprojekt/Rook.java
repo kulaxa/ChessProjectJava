@@ -161,11 +161,10 @@ public class Rook extends ChessPiece {
             possibleMoves.add(num);
         }
         //System.out.print("rook possible move: ");
-        
+        rosada = false;
         if(!alreadyMoved) {
         	if (ChessPiece.pointToInt(this.getPosition()) == 0) {
         		if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
-        			System.out.println(((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved());
         			int j = 0;
         			for(int i = 1; i < 4; i++) {
             			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
@@ -184,36 +183,59 @@ public class Rook extends ChessPiece {
         }
         if(!alreadyMoved) {
         	if (ChessPiece.pointToInt(this.getPosition()) == 7) {
-        		int j = 0;
-        		for(int i = 6; i > 4; i--) {
-        			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
-        				j++;
+        		if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
+        			int j = 0;
+            		for(int i = 6; i > 4; i--) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+            		if(j == 0) {
+        				rosada = true;
+        				System.out.println("rosada: " + rosada);
+        			}
         		}
+        		
         	}
         	
         }
         if(!alreadyMoved) {
         	if (ChessPiece.pointToInt(this.getPosition()) == 56) {
-        		int j = 0;
-        		for(int i = 57; i < 60; i++) {
-        			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
-        				j++;
+        		if (!((King) (sahFrame.getFieldList().get(60).getComponent(0))).getAlreadyMoved()) {
+        			int j = 0;
+            		for(int i = 57; i < 60; i++) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+            		if(j == 0) {
+        				rosada = true;
+        				System.out.println("rosada: " + rosada);
         		}
+        		
         		
         	}
         	
         }
+        }
         if(!alreadyMoved) {
         	if (ChessPiece.pointToInt(this.getPosition()) == 63) {
-        		int j = 0;
-        		for(int i = 62; i > 60; i--) {
-        			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
-        				j++;
+        		if (!((King) (sahFrame.getFieldList().get(60).getComponent(0))).getAlreadyMoved()) {
+        			
+        			int j = 0;
+            		for(int i = 62; i > 60; i--) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+            		if(j == 0) {
+        				rosada = true;
+        				System.out.println("rosada: " + rosada);
         		}
+        		}
+        	}
+        		
         		
         	
         	}
-        }	
+        	
         
         possibleMoves.forEach(move -> System.out.print(" " + move));
         
