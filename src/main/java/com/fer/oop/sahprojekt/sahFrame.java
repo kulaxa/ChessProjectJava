@@ -86,6 +86,7 @@ public class sahFrame extends JFrame {
                                     if(((Rook)clickedPiece).isRosada()) {
                                     	
                                     	fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece ->piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
+                                    	
                                     }
 
                                     currentPanel = (JPanel) e.getSource(); //new code

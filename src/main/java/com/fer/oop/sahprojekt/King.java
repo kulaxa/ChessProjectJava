@@ -67,7 +67,75 @@ public class King extends ChessPiece {
                 }
             }
         }
-        
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 4) {
+        		if (!((Rook) (sahFrame.getFieldList().get(0).getComponent(7))).getAlreadyMoved()) {
+        			int j = 0;
+        			for(int i = 5; i < 7; i++) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+        			if(j == 0) {
+        				((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).setRosada(true);
+        			}
+        			
+        		}
+        		
+        		
+        	}
+        	
+        }
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 4) {
+        		if (!((King) (sahFrame.getFieldList().get(0).getComponent(0))).getAlreadyMoved()) {
+        			int j = 0;
+            		for(int i = 3; i > 0; i--) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+            		if(j == 0) {
+            			((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).setRosada(true);
+        			}
+        		}
+        		
+        	}
+        	
+        }
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 60) {
+        		if (!((King) (sahFrame.getFieldList().get(63).getComponent(0))).getAlreadyMoved()) {
+        			int j = 0;
+            		for(int i = 61; i < 63; i++) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+            		if(j == 0) {
+            			((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).setRosada(true);
+        		}
+        		
+        		
+        	}
+        	
+        }
+        }
+        if(!alreadyMoved) {
+        	if (ChessPiece.pointToInt(this.getPosition()) == 60) {
+        		if (!((King) (sahFrame.getFieldList().get(56).getComponent(0))).getAlreadyMoved()) {
+        			
+        			int j = 0;
+            		for(int i = 59; i > 56; i--) {
+            			if(sahFrame.getFieldList().get(i).getComponents().length != 0)
+            				j++;
+            		}
+            		if(j == 0) {
+            			((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).setRosada(true);
+        		}
+        		}
+        	}
+        		
+        		
+        	
+        	}
 
         return possibleMoves;
     }

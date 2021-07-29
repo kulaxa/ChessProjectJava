@@ -34,9 +34,13 @@ public class Rook extends ChessPiece {
     public void setAlreadyMoved(boolean alreadyMoved) {
         this.alreadyMoved = alreadyMoved;
     }
+    
    
 
-    public boolean isRosada() {
+    public boolean getAlreadyMoved() {
+		return alreadyMoved;
+	}
+	public boolean isRosada() {
 		return rosada;
 	}
 	public void setRosada(boolean leftUp) {
@@ -161,7 +165,7 @@ public class Rook extends ChessPiece {
             possibleMoves.add(num);
         }
         //System.out.print("rook possible move: ");
-        rosada = false;
+        
         if(!alreadyMoved) {
         	if (ChessPiece.pointToInt(this.getPosition()) == 0) {
         		if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
