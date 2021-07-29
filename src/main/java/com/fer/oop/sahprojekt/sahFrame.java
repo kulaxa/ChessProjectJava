@@ -49,6 +49,7 @@ public class sahFrame extends JFrame {
     private ChessPiece clickedPiece;
     private List<Integer> possibleMoves;
     private boolean isPieceSelected = false;
+    private boolean sah;
 
     public static List<JPanel> getFieldList() {
         return fieldList;
@@ -57,6 +58,7 @@ public class sahFrame extends JFrame {
     public sahFrame() throws IOException, InterruptedException, InvocationTargetException {
         Color myBrown = new Color(191, 152, 90);
         board.setLayout(new GridLayout(8, 8));
+        sah = false;
         // board.setSize(800,800);
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -177,6 +179,16 @@ public class sahFrame extends JFrame {
                                 }
 
                             }
+                            for(ChessPiece ch: pieceList) {
+                            	for(Integer i: ch.getPossibleMoves()) {
+                            		if(sahFrame.getFieldList().get(i).getComponents().length != 0) {
+                            			if(((ChessPiece) (sahFrame.getFieldList().get(i).getComponent(0))) instanceof King) {
+                            				sah = true;
+                            			}
+                            		}
+                            	}
+                            }
+                            System.out.print(sah);
 
                             for (JPanel fl : fieldList) {
 
@@ -346,6 +358,7 @@ public class sahFrame extends JFrame {
 
             }
         }
+        
 
         addPiecesToBoard();
 

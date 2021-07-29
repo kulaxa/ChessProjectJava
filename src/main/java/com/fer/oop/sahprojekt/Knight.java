@@ -31,57 +31,7 @@ public class Knight extends ChessPiece {
     }
 
     private List<Integer> checkMoves() {
-        // int position = ChessPiece.pointToInt(this.getPosition());
-//        int upLeft = 0, upRight = 0, downLeft = 0, downRight = 0;
-//
-//        boolean switchSide = false;
-//
-//        possibleMoves.clear();
-//        int position = ChessPiece.pointToInt(this.getPosition());
-//        int counter = 1;
-//        System.out.println("position " + position);
-//        System.out.println("positon: " + this.getPosition());
-//        System.out.println("oe:" + (this.getPosition().getY() - counter));
-//        int left = 0, right = 0, up = 0, down = 0;
-//        if (this.getPosition().getX() != 0 && sahFrame.getFieldList().get(this.getPosition().getX() - 1).getComponents().length == 0) {
-//            left++;
-//        }
-//        if (this.getPosition().getX() != 7 && sahFrame.getFieldList().get(this.getPosition().getX() + 1).getComponents().length == 0) {
-//            right++;
-//        }
-//        if (this.getPosition().getY() != 0 && sahFrame.getFieldList().get(this.getPosition().getX() - 8).getComponents().length == 0) {
-//            up++;
-//        }
-//        if (this.getPosition().getY() != 7 && sahFrame.getFieldList().get(this.getPosition().getX() + 8).getComponents().length == 0) {
-//            down++;
-//        }
-////        System.out.println("left: " + left);
-////        System.out.println("right: " + right);
-////        System.out.println("up: " + up);
-////        System.out.println("down: " + down);
-////        
-//
-//        for (int i = 1; i <= left; i++) {
-//            int num = this.getPosition().getY() * 8 + this.getPosition().getX() - i;
-//            possibleMoves.add(num);
-//            //System.out.println("Rook move: "+ num);
-//        }
-//        for (int i = 1; i <= right; i++) {
-//            int num = this.getPosition().getY() * 8 + this.getPosition().getX() + i;
-//            possibleMoves.add(num);
-//            //System.out.println("Rook move: "+ num);
-//        }
-//        for (int i = 1; i <= up; i++) {
-//            int num = this.getPosition().getY() * 8 - 8 * i + this.getPosition().getX();
-//            possibleMoves.add(num);
-//            //System.out.println("Rook move: "+ num);
-//        }
-//        for (int i = 1; i <= down; i++) {
-//            int num = this.getPosition().getY() * 8 + 8 * i + this.getPosition().getX();
-//            possibleMoves.add(num);
-//        }
-//        //System.out.print("rook possible move: ");
-//        possibleMoves.forEach(move -> System.out.print(" " + move));
+
 
         
         possibleMoves.clear();
@@ -113,7 +63,6 @@ public class Knight extends ChessPiece {
                 }
                 else{
                     possibleMoves.add(ChessPiece.pointToInt(Point.addTwoPoints(p, this.getPosition())));
-                   // System.out.println("Adding move: "+p);
                 }
             }
         }
@@ -154,12 +103,10 @@ public class Knight extends ChessPiece {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        //System.out.println("42");
     }
 
     @Override
     public void mouseExited(MouseEvent e) { //ovo je komentar
-        //System.out.println("42");
     }
     
     

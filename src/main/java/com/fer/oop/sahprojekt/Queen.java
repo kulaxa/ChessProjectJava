@@ -39,16 +39,11 @@ public class Queen extends ChessPiece{
         possibleMoves.clear();
         int position = ChessPiece.pointToInt(this.getPosition());
         int counter = 1;
-        System.out.println("position "+position);
-        System.out.println("positon: "+ this.getPosition());
-        System.out.println("oe:" + (this.getPosition().getY() - counter));
+       
         while (this.getPosition().getX() - counter >=0 && this.getPosition().getY() - counter >=0) { 
-            System.out.println("¸loop0");
             
             if (sahFrame.getFieldList().get(position - counter * 9).getComponents().length == 0) {
-                System.out.println("-9");
-                possibleMoves.add(position - counter * 9);
-
+            	possibleMoves.add(position - counter * 9);
                 counter++;
 
             }
@@ -105,9 +100,7 @@ public class Queen extends ChessPiece{
            counter =1;
         while (this.getPosition().getX() + counter <=7 && this.getPosition().getY() + counter <=7) {
             
-            System.out.println("loop3");
             if (sahFrame.getFieldList().get(position + counter * 9).getComponents().length == 0) {
-                System.out.println("+9");
                possibleMoves.add(position + counter * 9);
 
                 counter++;
@@ -122,8 +115,6 @@ public class Queen extends ChessPiece{
             }
         
         }
-        System.out.println("done");
-        System.out.println("");
         
         int left = 0, right = 0, up = 0, down = 0;
 
@@ -142,7 +133,6 @@ public class Queen extends ChessPiece{
                     } else if (switchSide == false) {
 
                         if (sahFrame.getFieldList().get(this.getPosition().getY() * 8 + j).getComponents().length == 0) {
-                            //System.out.println("left line: " + sahFrame.getFieldList().get(this.getPosition().getY() * 8 + j).getComponents().length);
                             left++;
                         } else {
                             left = 0;
@@ -206,32 +196,23 @@ public class Queen extends ChessPiece{
             }
         }
 
-//        System.out.println("left: " + left);
-//        System.out.println("right: " + right);
-//        System.out.println("up: " + up);
-//        System.out.println("down: " + down);
-//        
 
         for (int i = 1; i <= left; i++) {
             int num = this.getPosition().getY() * 8 + this.getPosition().getX() - i;
             possibleMoves.add(num);
-            //System.out.println("Rook move: "+ num);
         }
         for (int i = 1; i <= right; i++) {
             int num = this.getPosition().getY() * 8 + this.getPosition().getX() + i;
             possibleMoves.add(num);
-            //System.out.println("Rook move: "+ num);
         }
         for (int i = 1; i <= up; i++) {
             int num = this.getPosition().getY() * 8 - 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
-            //System.out.println("Rook move: "+ num);
         }
         for (int i = 1; i <= down; i++) {
             int num = this.getPosition().getY() * 8 + 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
         }
-        //System.out.print("rook possible move: ");
         possibleMoves.forEach(move -> System.out.print(" " + move));
         
         return possibleMoves;

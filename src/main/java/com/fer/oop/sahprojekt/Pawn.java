@@ -48,9 +48,6 @@ public class Pawn extends ChessPiece {
     public void mouseClicked(MouseEvent e) {
 
         ChessPiece paneltemp = (ChessPiece) e.getComponent(); //može provjera jeli japenl
-        //ChessPiece piecetemp = (ChessPiece)paneltemp.getComponents()[0];
-        //paneltemp.setPosition(new Point(0,0));
-        //System.out.println(paneltemp.getPosition());
         clickedPawn = paneltemp;
 
     }
@@ -67,12 +64,10 @@ public class Pawn extends ChessPiece {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        //System.out.println("42");
     }
 
     @Override
     public void mouseExited(MouseEvent e) { //ovo je komentar
-        //System.out.println("42");
     }
 
     public void setAlreadyMoved(boolean alreadyMoved) {
@@ -148,20 +143,6 @@ public class Pawn extends ChessPiece {
             }
             );
         }
-//        if (!possibleMoves.isEmpty()) {
-//            for (Integer i : possibleMoves) {
-//                
-//                if (checkForOtherPieces(sahFrame.getPieceList(), i)) {
-//                    System.out.println("Removing move: " + i);
-//                    possibleMoves.remove(i);
-//                }
-//                
-//            }
-//        }
-        
-//        for (Integer i : possibleMoves) {
-//            System.out.println("possible move: " + i);
-//        }
         
         return possibleMoves;
     }
@@ -169,7 +150,6 @@ public class Pawn extends ChessPiece {
     private boolean checkForOtherPieces(List<ChessPiece> pieces, int move) {
 
         for (ChessPiece pic : pieces) {
-            //System.out.println("All pawn pos " +ChessPiece.pointToInt(pic.getPosition()));
             if (ChessPiece.pointToInt(pic.getPosition()) == move) {
                 return true; //if move is blocked
             }
