@@ -263,6 +263,13 @@ public class sahFrame extends JFrame {
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
+                                     if (clickedPiece instanceof Rook) {
+                                        if (((Rook) clickedPiece).isRosada()) {
+
+                                            fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
+
+                                        }
+                                    }
 
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
