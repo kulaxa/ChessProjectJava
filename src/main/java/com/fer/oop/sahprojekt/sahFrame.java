@@ -112,6 +112,11 @@ public class sahFrame extends JFrame {
                                                     Pawn temp = (Pawn) clickedPiece;
                                                     temp.setAlreadyMoved(true);
                                                 }
+                                                if (clickedPiece instanceof Rook) {
+                                                    Rook temp = (Rook) clickedPiece;
+                                                    temp.setAlreadyMoved(true);
+                                                }
+                                              
 
                                                 clickedPanel.add(clickedPiece);
                                                 Game.getNextTurnColor();
@@ -228,7 +233,10 @@ public class sahFrame extends JFrame {
                                                     Pawn temp = (Pawn) clickedPiece;
                                                     temp.setAlreadyMoved(true);
                                                 }
-
+                                                if (clickedPiece instanceof Rook) {
+                                                    Rook temp = (Rook) clickedPiece;
+                                                    temp.setAlreadyMoved(true);
+                                                }
                                                 clickedPanel.add(clickedPiece);
                                               
                                                 Game.getNextTurnColor();
