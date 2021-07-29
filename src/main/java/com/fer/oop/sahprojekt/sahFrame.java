@@ -61,6 +61,7 @@ public class sahFrame extends JFrame {
         sah = false;
         // board.setSize(800,800);
         for (int i = 0; i < 8; i++) {
+        	
             for (int j = 0; j < 8; j++) {
                 JPanel field = new JPanel();
 
@@ -148,6 +149,18 @@ public class sahFrame extends JFrame {
                                                     ((Rook) clickedPiece).setRosada(false);
 
                                                     Game.getNextTurnColor();
+                                                    for(ChessPiece ch: pieceList) {
+                                                    	for(Integer k: ch.getPossibleMoves()) {
+                                                    		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                    			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                    				sah = true;
+                                                    			}
+                                                    		}
+                                                    	}
+                                                	}
+                                                
+                                                    	System.out.println("sah :" + sah);
+                                            
                                                 }
                                             }
                                         }
@@ -188,6 +201,18 @@ public class sahFrame extends JFrame {
 
                                                 clickedPanel.add(clickedPiece);
                                                 Game.getNextTurnColor();
+                                                for(ChessPiece ch: pieceList) {
+                                                	for(Integer k: ch.getPossibleMoves()) {
+                                                		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                				sah = true;
+                                                			}
+                                                		}
+                                                	}
+                                            	}
+                                            
+                                                	System.out.println("sah :" + sah);
+                                        
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
 
@@ -219,16 +244,7 @@ public class sahFrame extends JFrame {
                                 }
 
                             }
-                            for(ChessPiece ch: pieceList) {
-                            	for(Integer i: ch.getPossibleMoves()) {
-                            		if(sahFrame.getFieldList().get(i).getComponents().length != 0) {
-                            			if(((ChessPiece) (sahFrame.getFieldList().get(i).getComponent(0))) instanceof King) {
-                            				sah = true;
-                            			}
-                            		}
-                            	}
-                            }
-                            System.out.print(sah);
+                           
 
                             for (JPanel fl : fieldList) {
 
@@ -325,6 +341,18 @@ public class sahFrame extends JFrame {
                                                     }
                                                     ((Rook) clickedPiece).setRosada(false);
                                                     Game.getNextTurnColor();
+                                                    for(ChessPiece ch: pieceList) {
+                                                    	for(Integer k: ch.getPossibleMoves()) {
+                                                    		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                    			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                    				sah = true;
+                                                    			}
+                                                    		}
+                                                    	}
+                                                	}
+                                                
+                                                    	System.out.println("sah :" + sah);
+                                            
                                                 }
                                             }
                                         }
@@ -367,6 +395,18 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
+                                                for(ChessPiece ch: pieceList) {
+                                                	for(Integer k: ch.getPossibleMoves()) {
+                                                		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                				sah = true;
+                                                			}
+                                                		}
+                                                	}
+                                            	}
+                                            
+                                                	System.out.println("sah :" + sah);
+                                        
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();

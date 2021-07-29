@@ -171,5 +171,7 @@ public class King extends ChessPiece {
     
     
     
+    
+    
     //knight- (-17, -6, -10, +6, +10, +17, +15, -15 
 }

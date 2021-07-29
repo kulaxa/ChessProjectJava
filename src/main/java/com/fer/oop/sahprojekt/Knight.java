@@ -58,7 +58,6 @@ public class Knight extends ChessPiece {
                     
                 if(sahFrame.getFieldList().get(ChessPiece.pointToInt(Point.addTwoPoints(p, this.getPosition()))).getComponents().length != 0){
                    if( ((ChessPiece)sahFrame.getFieldList().get(ChessPiece.pointToInt(Point.addTwoPoints(p, this.getPosition()))).getComponents()[0]).getColor() != this.getColor())
-                      //  System.out.println("Adding move: "+p);
                        possibleMoves.add(ChessPiece.pointToInt(Point.addTwoPoints(p, this.getPosition())));
                 }
                 else{

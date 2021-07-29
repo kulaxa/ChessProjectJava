@@ -49,15 +49,12 @@ public class Rook extends ChessPiece {
 	
 	@Override
     public List<Integer> getPossibleMoves() {
-		System.out.println(" ");
         return checkMoves();
     }
 
     private List<Integer> checkMoves() {
 
-    	System.out.println("CheckMoves");
-        // int position = ChessPiece.pointToInt(this.getPosition());
-
+    	
         int left = 0, right = 0, up = 0, down = 0;
 
         boolean switchSide = false;
@@ -75,7 +72,6 @@ public class Rook extends ChessPiece {
                     } else if (switchSide == false) {
 
                         if (sahFrame.getFieldList().get(this.getPosition().getY() * 8 + j).getComponents().length == 0) {
-                            //System.out.println("left line: " + sahFrame.getFieldList().get(this.getPosition().getY() * 8 + j).getComponents().length);
                             left++;
                         } else {
                             left = 0;
@@ -139,32 +135,23 @@ public class Rook extends ChessPiece {
             }
         }
 
-//        System.out.println("left: " + left);
-//        System.out.println("right: " + right);
-//        System.out.println("up: " + up);
-//        System.out.println("down: " + down);
-//        
 
         for (int i = 1; i <= left; i++) {
             int num = this.getPosition().getY() * 8 + this.getPosition().getX() - i;
             possibleMoves.add(num);
-            //System.out.println("Rook move: "+ num);
         }
         for (int i = 1; i <= right; i++) {
             int num = this.getPosition().getY() * 8 + this.getPosition().getX() + i;
             possibleMoves.add(num);
-            //System.out.println("Rook move: "+ num);
         }
         for (int i = 1; i <= up; i++) {
             int num = this.getPosition().getY() * 8 - 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
-            //System.out.println("Rook move: "+ num);
         }
         for (int i = 1; i <= down; i++) {
             int num = this.getPosition().getY() * 8 + 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
         }
-        //System.out.print("rook possible move: ");
         
         if(!alreadyMoved) {
         	if (ChessPiece.pointToInt(this.getPosition()) == 0) {
@@ -241,7 +228,6 @@ public class Rook extends ChessPiece {
         	}
         	
         
-        possibleMoves.forEach(move -> System.out.print(" " + move));
         
         return possibleMoves;
 
@@ -252,9 +238,7 @@ public class Rook extends ChessPiece {
     public void mouseClicked(MouseEvent e) {
 
         ChessPiece paneltemp = (ChessPiece) e.getComponent(); //može provjera jeli japenl
-        //ChessPiece piecetemp = (ChessPiece)paneltemp.getComponents()[0];
-        //paneltemp.setPosition(new Point(0,0));
-        //System.out.println(paneltemp.getPosition());
+        
         clickedRook = paneltemp;
 
     }
@@ -271,12 +255,10 @@ public class Rook extends ChessPiece {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        //System.out.println("42");
     }
 
     @Override
     public void mouseExited(MouseEvent e) { //ovo je komentar
-        //System.out.println("42");
     }
 
 }
