@@ -439,8 +439,13 @@ public class sahFrame extends JFrame {
             }
         }
 
+<<<<<<< Updated upstream
         addPiecesToBoard();
         //setTestPieces();
+=======
+        //addPiecesToBoard();
+        setTestPieces();
+>>>>>>> Stashed changes
         eatenPiecesPanel.setLayout(new GridLayout(2, 0));
         eatenPiecesWhitePanel.setBackground(Color.WHITE);
         eatenPiecesBlackPanel.setBackground(Color.BLACK);
