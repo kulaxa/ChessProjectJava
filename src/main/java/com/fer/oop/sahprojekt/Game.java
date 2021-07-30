@@ -27,6 +27,7 @@ public class Game {
         
     }
     public static Color getCurrentColor(){
+        
         return playerTurn;
     }
     
@@ -56,6 +57,8 @@ public class Game {
         playerTurn = prevColor;
         prevColor= temp;
         
+        
+        System.out.println("promijenila se boja");
         
         
         
