@@ -216,19 +216,10 @@ public class Queen extends ChessPiece{
             int num = this.getPosition().getY() * 8 + 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
         }
-        for(ChessPiece ch: sahFrame.getPieceList()) {
-        	for(Integer k: ch.getPossibleMoves()) {
-        		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
-        			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
-        				ChessPiece.setSah(true);
-        			}
-        		}
-        	}
-    	}
-    
-        	System.out.println("sah :" + ChessPiece.isSah());
 
+        
     
+
         
         return possibleMoves;
     }

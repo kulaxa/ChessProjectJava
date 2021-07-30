@@ -128,17 +128,24 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
     
     public static boolean checkForChess(){
         Color currentColor = Game.getCurrentColor();
+        
          boolean result = false;
         King kingInChess=(King)
-        sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() != currentColor).findAny().get();
+
+        sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == currentColor).findAny().get();
 
 
-
-
+       
         List<ChessPiece>tempList=sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
+        System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
         for(ChessPiece piece: tempList){
             for(Integer in: piece.getPossibleMoves()){
+        
+                System.out.print(in+", ");
                 
+                
+                if(in == ChessPiece.pointToInt(kingInChess.getPosition()))
+                    result= true;
             }
             
         }
