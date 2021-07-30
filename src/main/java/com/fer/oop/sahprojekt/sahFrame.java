@@ -49,7 +49,6 @@ public class sahFrame extends JFrame {
     private ChessPiece clickedPiece;
     private List<Integer> possibleMoves;
     private boolean isPieceSelected = false;
-    private boolean sah;
 
     public static List<JPanel> getFieldList() {
         return fieldList;
@@ -58,10 +57,8 @@ public class sahFrame extends JFrame {
     public sahFrame() throws IOException, InterruptedException, InvocationTargetException {
         Color myBrown = new Color(191, 152, 90);
         board.setLayout(new GridLayout(8, 8));
-        sah = false;
         // board.setSize(800,800);
         for (int i = 0; i < 8; i++) {
-        	
             for (int j = 0; j < 8; j++) {
                 JPanel field = new JPanel();
 
@@ -149,19 +146,7 @@ public class sahFrame extends JFrame {
                                                     ((Rook) clickedPiece).setRosada(false);
 
                                                     Game.getNextTurnColor();
-                                                    for(ChessPiece ch: pieceList) {
-                                                    	for(Integer k: ch.getPossibleMoves()) {
-                                                    		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
-                                                    			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
-                                                    				sah = true;
-                                                    			}
-                                                    		}
-                                                    	}
-                                                	}
-                                                
-                                                    	System.out.println("sah :" + sah);
-                                            
-                                                
+                                                }
                                             }
                                         }
                                     }
@@ -201,18 +186,6 @@ public class sahFrame extends JFrame {
 
                                                 clickedPanel.add(clickedPiece);
                                                 Game.getNextTurnColor();
-                                                for(ChessPiece ch: pieceList) {
-                                                	for(Integer k: ch.getPossibleMoves()) {
-                                                		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
-                                                			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
-                                                				sah = true;
-                                                			}
-                                                		}
-                                                	}
-                                            	}
-                                            
-                                                	System.out.println("sah :" + sah);
-                                        
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
 
@@ -244,7 +217,6 @@ public class sahFrame extends JFrame {
                                 }
 
                             }
-                           
 
                             for (JPanel fl : fieldList) {
 
@@ -291,6 +263,13 @@ public class sahFrame extends JFrame {
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
+                                     if (clickedPiece instanceof Rook) {
+                                        if (((Rook) clickedPiece).isRosada()) {
+
+                                            fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
+
+                                        }
+                                    }
 
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
@@ -341,18 +320,6 @@ public class sahFrame extends JFrame {
                                                     }
                                                     ((Rook) clickedPiece).setRosada(false);
                                                     Game.getNextTurnColor();
-                                                    for(ChessPiece ch: pieceList) {
-                                                    	for(Integer k: ch.getPossibleMoves()) {
-                                                    		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
-                                                    			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
-                                                    				sah = true;
-                                                    			}
-                                                    		}
-                                                    	}
-                                                	}
-                                                
-                                                    	System.out.println("sah :" + sah);
-                                            
                                                 }
                                             }
                                         }
@@ -395,20 +362,7 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
-                                                for(ChessPiece ch: pieceList) {
-                                                	for(Integer k: ch.getPossibleMoves()) {
-                                                		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
-                                                			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
-                                                				sah = true;
-                                                			}
-                                                		}
-                                                	}
-                                            	}
-                                            
-                                                	System.out.println("sah :" + sah);
-                                        
                                                 System.out.println("chess: "+ ChessPiece.checkForChess());
-
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -484,7 +438,6 @@ public class sahFrame extends JFrame {
 
             }
         }
-        
 
 
 
@@ -571,7 +524,27 @@ public class sahFrame extends JFrame {
             BufferedImage imageQueenBlack = ImageIO.read(fileQueenBlack);
             ImageIcon iconQueenBlack = new ImageIcon(imageQueenBlack);
 
+            File fileQueenWhite = new File("queen_white.png");
+            BufferedImage imageQueenWhite = ImageIO.read(fileQueenWhite);
+            ImageIcon iconQueenWhite = new ImageIcon(imageQueenWhite);
 
+            File fileKingBlack = new File("king_black.png");
+            BufferedImage imageKingBlack = ImageIO.read(fileKingBlack);
+            ImageIcon iconKingBlack = new ImageIcon(imageKingBlack);
+
+            File fileKingWhite = new File("king_white.png");
+            BufferedImage imageKingWhite = ImageIO.read(fileKingWhite);
+            ImageIcon iconKingWhite = new ImageIcon(imageKingWhite);
+
+            File fileKnightWhite = new File("knight_white.png");
+            BufferedImage imageKnightWhite = ImageIO.read(fileKnightWhite);
+            ImageIcon iconKnightWhite = new ImageIcon(imageKnightWhite);
+
+            File fileKnightBlack = new File("knight_black.png");
+            BufferedImage imageKnightBlack = ImageIO.read(fileKnightBlack);
+            ImageIcon iconKnightBlack = new ImageIcon(imageKnightBlack);
+
+            for (int i = 0; i < 8; i++) {
                 if (j == 0) {
                     Pawn pawn = new Pawn(new Point(i, 1), com.fer.oop.sahprojekt.Color.WHITE);
 
