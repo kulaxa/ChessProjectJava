@@ -216,7 +216,7 @@ public class Queen extends ChessPiece{
             int num = this.getPosition().getY() * 8 + 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
         }
-        possibleMoves.forEach(move -> System.out.print(" " + move));
+        
         
         return possibleMoves;
     }
