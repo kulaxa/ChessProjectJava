@@ -117,7 +117,7 @@ public class Pawn extends ChessPiece {
             possibleMoves.add(ChessPiece.pointToInt(this.getPosition()) - 8);
             if (!alreadyMoved) {
                 //  alreadyMoved = true;
-
+                if(sahFrame.getFieldList().get(ChessPiece.pointToInt(this.getPosition())-8).getComponents().length ==0)
                 possibleMoves.add(ChessPiece.pointToInt(this.getPosition()) - 16);
             }
 
