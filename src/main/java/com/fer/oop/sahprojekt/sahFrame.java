@@ -35,6 +35,7 @@ public class sahFrame extends JFrame {
     private JPanel board = new JPanel();
     private static List<JPanel> fieldList = new ArrayList<>();
     private static List<ChessPiece> pieceList = new ArrayList<>();
+    
 
     private JPanel eatenPiecesPanel = new JPanel();
     private JPanel eatenPiecesWhitePanel = new JPanel();
@@ -54,7 +55,7 @@ public class sahFrame extends JFrame {
         return fieldList;
     }
 
-    public sahFrame() throws IOException, InterruptedException, InvocationTargetException {
+	public sahFrame() throws IOException, InterruptedException, InvocationTargetException {
         Color myBrown = new Color(191, 152, 90);
         board.setLayout(new GridLayout(8, 8));
         // board.setSize(800,800);
@@ -146,6 +147,7 @@ public class sahFrame extends JFrame {
                                                     ((Rook) clickedPiece).setRosada(false);
 
                                                     Game.getNextTurnColor();
+                                                    
                                                 }
                                             }
                                         }
@@ -320,7 +322,7 @@ public class sahFrame extends JFrame {
                                                     }
                                                     ((Rook) clickedPiece).setRosada(false);
                                                     Game.getNextTurnColor();
-                                                }
+                                                }       
                                             }
                                         }
                                     }

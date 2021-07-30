@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 public abstract class ChessPiece extends JLabel implements MouseListener{
     private Point position;
     private final Color color;
+    private static boolean sah = false;
+
     static List<ChessPiece> pieces= new ArrayList<>();
     //static List<ChessPiece> piecesWhite= new ArrayList<>();
     
@@ -32,6 +34,13 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
         pieces.add(this);
         
     }
+    public static boolean isSah() {
+		return sah;
+	}
+
+	public static void setSah(boolean newSah) {
+		sah = newSah;
+	}
    
     public Color getColor() {
         return color;
