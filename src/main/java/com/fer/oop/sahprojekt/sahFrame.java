@@ -88,9 +88,25 @@ public class sahFrame extends JFrame {
                                     if (clickedPiece instanceof Rook) {
                                         if (((Rook) clickedPiece).isRosada()) {
 
-                                            fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
+                                            fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King)
+                                                    .filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
 
                                         }
+                                    }
+                                    
+                                    
+                                    //king rosada, promijeni u green
+                                    if (clickedPiece instanceof King) {
+                                       
+                                        
+                                           pieceList.stream().filter(pic -> pic instanceof Rook && pic.getColor() == Game.getCurrentColor()).forEach(rook -> {
+                                             if(((Rook)rook).isRosada())
+                                             fieldList.get(ChessPiece.pointToInt(rook.getPosition())).setBackground(Color.GREEN);
+                                         });
+                                       
+                                            
+                                        
+                                       
                                     }
 
                                     currentPanel = (JPanel) e.getSource(); //new code
@@ -146,10 +162,11 @@ public class sahFrame extends JFrame {
                                                             ((King) tempKing).setAlreadyMoved(true);
                                                         }
                                                     }
-
+                                                    
                                                     ((Rook) clickedPiece).setRosada(false);
-
+                                                    
                                                     Game.getNextTurnColor();
+                                                    
                                                 }
                                             }
                                         }
@@ -274,6 +291,20 @@ public class sahFrame extends JFrame {
                                             fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
 
                                         }
+                                    }
+                                     
+                                      //king rosada, promijeni u green
+                                     if (clickedPiece instanceof King) {
+                                        
+                                        
+                                           pieceList.stream().filter(pic -> pic instanceof Rook && pic.getColor() == Game.getCurrentColor()).forEach(rook -> {
+                                             if(((Rook)rook).isRosada())
+                                             fieldList.get(ChessPiece.pointToInt(rook.getPosition())).setBackground(Color.GREEN);
+                                         });
+                                       
+                                            
+                                        
+                                       
                                     }
                                      
                                      System.out.println("Chess: "+ChessPiece.checkForChess());
@@ -451,9 +482,9 @@ public class sahFrame extends JFrame {
 
 
 
-        //addPiecesToBoard();
-        setTestPieces();
-
+        addPiecesToBoard();
+        //setTestPieces();
+        //setRosdaPieces();
       
 
 
