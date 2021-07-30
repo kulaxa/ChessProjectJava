@@ -77,6 +77,7 @@ public class King extends ChessPiece {
             		}
         			if(j == 0) {
         				((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).setRosada(true);
+        				System.out.println(((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).isRosada());
         			}
         			
         		}
@@ -95,6 +96,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).setRosada(true);
+            			System.out.println(((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).isRosada());
         			}
         		}
         		
@@ -111,6 +113,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).setRosada(true);
+            			System.out.println(((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).isRosada());
         		}
         		
         		
@@ -129,6 +132,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).setRosada(true);
+            			System.out.println(((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).isRosada());
         		}
         		}
         	}
@@ -163,14 +167,15 @@ public class King extends ChessPiece {
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        //System.out.println("42");
     }
 
     @Override
     public void mouseExited(MouseEvent e) { //ovo je komentar
+        //System.out.println("42");
     }
     
     
     
-    
-    
+
 }

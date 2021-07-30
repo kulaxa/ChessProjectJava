@@ -143,9 +143,13 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
 //        if(num != 0){
 //            result = true;
 //        }
+
+
+
         List<ChessPiece>tempList=sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
         for(ChessPiece piece: tempList){
             for(Integer in: piece.getPossibleMoves()){
+                System.out.println("this is pringing because iw t workings");
 //                if(in ==ChessPiece.pointToInt(kingInChess.getPosition()))
 //                    result= true;
             }

@@ -51,6 +51,9 @@ public class sahFrame extends JFrame {
     private List<Integer> possibleMoves;
     private boolean isPieceSelected = false;
 
+   
+   
+    
     public static List<JPanel> getFieldList() {
         return fieldList;
     }
@@ -147,7 +150,7 @@ public class sahFrame extends JFrame {
                                                     ((Rook) clickedPiece).setRosada(false);
 
                                                     Game.getNextTurnColor();
-                                                    
+
                                                 }
                                             }
                                         }
@@ -322,7 +325,7 @@ public class sahFrame extends JFrame {
                                                     }
                                                     ((Rook) clickedPiece).setRosada(false);
                                                     Game.getNextTurnColor();
-                                                }       
+                                                }
                                             }
                                         }
                                     }
@@ -364,6 +367,7 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
+
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -442,8 +446,9 @@ public class sahFrame extends JFrame {
 
 
 
-        addPiecesToBoard();
-        //setTestPieces();
+
+        //addPiecesToBoard();
+        setTestPieces();
 
       
 
