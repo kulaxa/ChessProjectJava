@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JLabel;
 
 /**
@@ -113,6 +114,37 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
             throw new IllegalArgumentException();
         return new Point(num%8, num/8);
         
+    }
+    
+    
+    public static boolean checkForChess(){
+        Color currentColor = Game.getCurrentColor();
+         boolean result = false;
+        King kingInChess=(King)
+        sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() != currentColor).findAny().get();
+//        long num=
+//        sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).filter(pic -> 
+//            
+//        pic.getPossibleMoves().stream().filter(move -> move== ChessPiece.pointToInt(kingInChess.getPosition())).count() != 0
+//           
+//            
+//            
+//            
+//        ).count();
+//        if(num != 0){
+//            result = true;
+//        }
+        List<ChessPiece>tempList=sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
+        for(ChessPiece piece: tempList){
+            for(Integer in: piece.getPossibleMoves()){
+                System.out.println("this is pringing because iw t workings");
+//                if(in ==ChessPiece.pointToInt(kingInChess.getPosition()))
+//                    result= true;
+            }
+            
+        }
+        
+        return result;
     }
     
 }
