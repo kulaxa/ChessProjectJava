@@ -362,7 +362,7 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
-                                                System.out.println("chess: "+ ChessPiece.checkForChess());
+                                              //  System.out.println("chess: "+ ChessPiece.checkForChess());
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -755,3 +755,4 @@ public class sahFrame extends JFrame {
 
 
 //ovo je komentar da vidimo kako radi merganje i takve stvari
+//ovo je novi komentenar da vidimo kako radi merganje i takve stvari
