@@ -24,13 +24,16 @@ public class Queen extends ChessPiece{
         possibleMoves = new LinkedList<>();
 
     }
-
+    
     @Override
     public List<Integer> getPossibleMoves() {
+        
+        
         return checkMoves();
     }
 
     private List<Integer> checkMoves() {
+        
         // int position = ChessPiece.pointToInt(this.getPosition());
         int upLeft = 0, upRight = 0, downLeft = 0, downRight = 0;
 

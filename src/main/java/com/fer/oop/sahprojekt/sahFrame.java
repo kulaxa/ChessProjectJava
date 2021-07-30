@@ -50,6 +50,9 @@ public class sahFrame extends JFrame {
     private List<Integer> possibleMoves;
     private boolean isPieceSelected = false;
 
+   
+   
+    
     public static List<JPanel> getFieldList() {
         return fieldList;
     }
@@ -441,8 +444,8 @@ public class sahFrame extends JFrame {
 
 
 
-        addPiecesToBoard();
-        //setTestPieces();
+        //addPiecesToBoard();
+        setTestPieces();
 
       
 
