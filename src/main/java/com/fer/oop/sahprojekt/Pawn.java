@@ -148,28 +148,14 @@ public class Pawn extends ChessPiece {
             }
             );
         }
-//        if (!possibleMoves.isEmpty()) {
-//            for (Integer i : possibleMoves) {
-//                
-//                if (checkForOtherPieces(sahFrame.getPieceList(), i)) {
-//                    System.out.println("Removing move: " + i);
-//                    possibleMoves.remove(i);
-//                }
-//                
-//            }
-//        }
-        
-//        for (Integer i : possibleMoves) {
-//            System.out.println("possible move: " + i);
-//        }
-        
+
+
         return possibleMoves;
     }
 
     private boolean checkForOtherPieces(List<ChessPiece> pieces, int move) {
 
         for (ChessPiece pic : pieces) {
-            //System.out.println("All pawn pos " +ChessPiece.pointToInt(pic.getPosition()));
             if (ChessPiece.pointToInt(pic.getPosition()) == move) {
                 return true; //if move is blocked
             }

@@ -454,8 +454,8 @@ public class sahFrame extends JFrame {
 
 
 
-        //addPiecesToBoard();
-        setTestPieces();
+        addPiecesToBoard();
+//        setTestPieces();
 
       
 
@@ -851,42 +851,42 @@ public class sahFrame extends JFrame {
                 fieldList.get(56 + 7).add(rook);
             }
             if (j == 0) {
-//                    Bishop bishop = new Bishop(new Point(2,0), com.fer.oop.sahprojekt.Color.WHITE);
-//                    bishop.setIcon(iconBishopWhite);
-//                    pieceList.add(bishop);
-//                    fieldList.get(2).add(bishop);
-//                    
-//                     bishop = new Bishop(new Point(5,0), com.fer.oop.sahprojekt.Color.WHITE);
-//                    bishop.setIcon(iconBishopWhite);
-//                    pieceList.add(bishop);
-//                    fieldList.get(5).add(bishop);
+                    Bishop bishop = new Bishop(new Point(2,0), com.fer.oop.sahprojekt.Color.WHITE);
+                    bishop.setIcon(iconBishopWhite);
+                    pieceList.add(bishop);
+                    fieldList.get(2).add(bishop);
+                    
+                     bishop = new Bishop(new Point(5,0), com.fer.oop.sahprojekt.Color.WHITE);
+                    bishop.setIcon(iconBishopWhite);
+                    pieceList.add(bishop);
+                    fieldList.get(5).add(bishop);
 
             }
             if (j == 1) {
-//                     Bishop bishop = new Bishop(new Point(2,7), com.fer.oop.sahprojekt.Color.BLACK);
-//                    bishop.setIcon(iconBishopBlack);
-//                    pieceList.add(bishop);
-//                    fieldList.get(7*8+2).add(bishop);
-//                    
-//                     bishop = new Bishop(new Point(5,7), com.fer.oop.sahprojekt.Color.BLACK);
-//                    bishop.setIcon(iconBishopBlack);
-//                    pieceList.add(bishop);
-//                    fieldList.get(7*8+5).add(bishop);
+                     Bishop bishop = new Bishop(new Point(2,7), com.fer.oop.sahprojekt.Color.BLACK);
+                    bishop.setIcon(iconBishopBlack);
+                    pieceList.add(bishop);
+                    fieldList.get(7*8+2).add(bishop);
+                    
+                     bishop = new Bishop(new Point(5,7), com.fer.oop.sahprojekt.Color.BLACK);
+                    bishop.setIcon(iconBishopBlack);
+                    pieceList.add(bishop);
+                    fieldList.get(7*8+5).add(bishop);
             }
 
-//            if (j == 0) {
-//
-//                    Queen queen = new Queen(new Point(3,0), com.fer.oop.sahprojekt.Color.WHITE);
-//                    queen.setIcon(iconQueenWhite);
-//                    pieceList.add(queen);
-//                    fieldList.get(3).add(queen);
-//            }
-//            if (j == 1) {
-//                     Queen queen = new Queen(new Point(3,7), com.fer.oop.sahprojekt.Color.BLACK);
-//                    queen.setIcon(iconQueenBlack);
-//                    pieceList.add(queen);
-//                    fieldList.get(8*7 +3).add(queen);
-//            }
+            if (j == 0) {
+
+                    Queen queen = new Queen(new Point(3,0), com.fer.oop.sahprojekt.Color.WHITE);
+                    queen.setIcon(iconQueenWhite);
+                    pieceList.add(queen);
+                    fieldList.get(3).add(queen);
+            }
+            if (j == 1) {
+                     Queen queen = new Queen(new Point(3,7), com.fer.oop.sahprojekt.Color.BLACK);
+                    queen.setIcon(iconQueenBlack);
+                    pieceList.add(queen);
+                    fieldList.get(8*7 +3).add(queen);
+            }
             if (j == 0) {
 
                 King king = new King(new Point(4, 0), com.fer.oop.sahprojekt.Color.WHITE);
@@ -902,29 +902,29 @@ public class sahFrame extends JFrame {
                 fieldList.get(8 * 7 + 4).add(king);
             }
 
-//            if (j == 0) {
-//                    Knight knight = new Knight(new Point(1,0), com.fer.oop.sahprojekt.Color.WHITE);
-//                    knight.setIcon(iconKnightWhite);
-//                    pieceList.add(knight);
-//                    fieldList.get(1).add(knight);
-//                    
-//                     knight = new Knight(new Point(6,0), com.fer.oop.sahprojekt.Color.WHITE);
-//                    knight.setIcon(iconKnightWhite);
-//                    pieceList.add(knight);
-//                    fieldList.get(6).add(knight);
-//            }
-//
-//            if (j == 1) {
-//                    Knight knight = new Knight(new Point(1,7), com.fer.oop.sahprojekt.Color.BLACK);
-//                    knight.setIcon(iconKnightBlack);
-//                    pieceList.add(knight);
-//                    fieldList.get(1+7*8).add(knight);
-//                    
-//                     knight = new Knight(new Point(6,7), com.fer.oop.sahprojekt.Color.BLACK);
-//                    knight.setIcon(iconKnightBlack);
-//                    pieceList.add(knight);
-//                    fieldList.get(6+7*8).add(knight);
-//            }
+            if (j == 0) {
+                    Knight knight = new Knight(new Point(1,0), com.fer.oop.sahprojekt.Color.WHITE);
+                    knight.setIcon(iconKnightWhite);
+                    pieceList.add(knight);
+                    fieldList.get(1).add(knight);
+                    
+                     knight = new Knight(new Point(6,0), com.fer.oop.sahprojekt.Color.WHITE);
+                    knight.setIcon(iconKnightWhite);
+                    pieceList.add(knight);
+                    fieldList.get(6).add(knight);
+            }
+
+            if (j == 1) {
+                    Knight knight = new Knight(new Point(1,7), com.fer.oop.sahprojekt.Color.BLACK);
+                    knight.setIcon(iconKnightBlack);
+                    pieceList.add(knight);
+                    fieldList.get(1+7*8).add(knight);
+                    
+                     knight = new Knight(new Point(6,7), com.fer.oop.sahprojekt.Color.BLACK);
+                    knight.setIcon(iconKnightBlack);
+                    pieceList.add(knight);
+                    fieldList.get(6+7*8).add(knight);
+            }
 
         }
 
