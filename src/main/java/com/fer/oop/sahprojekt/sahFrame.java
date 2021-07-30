@@ -439,8 +439,8 @@ public class sahFrame extends JFrame {
             }
         }
 
-        //addPiecesToBoard();
-        setTestPieces();
+        addPiecesToBoard();
+        //setTestPieces();
         eatenPiecesPanel.setLayout(new GridLayout(2, 0));
         eatenPiecesWhitePanel.setBackground(Color.WHITE);
         eatenPiecesBlackPanel.setBackground(Color.BLACK);
