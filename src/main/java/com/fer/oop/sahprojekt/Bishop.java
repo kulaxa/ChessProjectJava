@@ -40,14 +40,10 @@ public class Bishop extends ChessPiece {
         possibleMoves.clear();
         int position = ChessPiece.pointToInt(this.getPosition());
         int counter = 1;
-        System.out.println("position "+position);
-        System.out.println("positon: "+ this.getPosition());
-        System.out.println("oe:" + (this.getPosition().getY() - counter));
+        
         while (this.getPosition().getX() - counter >=0 && this.getPosition().getY() - counter >=0) { 
-            System.out.println("¸loop0");
             
             if (sahFrame.getFieldList().get(position - counter * 9).getComponents().length == 0) {
-                System.out.println("-9");
                 possibleMoves.add(position - counter * 9);
 
                 counter++;
@@ -106,9 +102,7 @@ public class Bishop extends ChessPiece {
            counter =1;
         while (this.getPosition().getX() + counter <=7 && this.getPosition().getY() + counter <=7) {
             
-            System.out.println("loop3");
             if (sahFrame.getFieldList().get(position + counter * 9).getComponents().length == 0) {
-                System.out.println("+9");
                possibleMoves.add(position + counter * 9);
 
                 counter++;
@@ -123,8 +117,7 @@ public class Bishop extends ChessPiece {
             }
         
         }
-        System.out.println("done");
-        System.out.println("");
+        
         
         return possibleMoves;
     }
@@ -153,13 +146,10 @@ public class Bishop extends ChessPiece {
     }
 
     @Override
-        public void mouseEntered(MouseEvent e) {
-        //System.out.println("42");
-    }
+        public void mouseEntered(MouseEvent e) {}
 
     @Override
         public void mouseExited(MouseEvent e) { //ovo je komentar
-        //System.out.println("42");
     }
 
 }

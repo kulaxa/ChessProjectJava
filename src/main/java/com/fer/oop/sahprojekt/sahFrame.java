@@ -49,6 +49,7 @@ public class sahFrame extends JFrame {
     private ChessPiece clickedPiece;
     private List<Integer> possibleMoves;
     private boolean isPieceSelected = false;
+    private boolean sah;
 
     public static List<JPanel> getFieldList() {
         return fieldList;
@@ -57,8 +58,10 @@ public class sahFrame extends JFrame {
     public sahFrame() throws IOException, InterruptedException, InvocationTargetException {
         Color myBrown = new Color(191, 152, 90);
         board.setLayout(new GridLayout(8, 8));
+        sah = false;
         // board.setSize(800,800);
         for (int i = 0; i < 8; i++) {
+        	
             for (int j = 0; j < 8; j++) {
                 JPanel field = new JPanel();
 
@@ -146,7 +149,19 @@ public class sahFrame extends JFrame {
                                                     ((Rook) clickedPiece).setRosada(false);
 
                                                     Game.getNextTurnColor();
-                                                }
+                                                    for(ChessPiece ch: pieceList) {
+                                                    	for(Integer k: ch.getPossibleMoves()) {
+                                                    		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                    			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                    				sah = true;
+                                                    			}
+                                                    		}
+                                                    	}
+                                                	}
+                                                
+                                                    	System.out.println("sah :" + sah);
+                                            
+                                                
                                             }
                                         }
                                     }
@@ -186,6 +201,18 @@ public class sahFrame extends JFrame {
 
                                                 clickedPanel.add(clickedPiece);
                                                 Game.getNextTurnColor();
+                                                for(ChessPiece ch: pieceList) {
+                                                	for(Integer k: ch.getPossibleMoves()) {
+                                                		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                				sah = true;
+                                                			}
+                                                		}
+                                                	}
+                                            	}
+                                            
+                                                	System.out.println("sah :" + sah);
+                                        
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
 
@@ -217,6 +244,7 @@ public class sahFrame extends JFrame {
                                 }
 
                             }
+                           
 
                             for (JPanel fl : fieldList) {
 
@@ -263,13 +291,6 @@ public class sahFrame extends JFrame {
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
-                                     if (clickedPiece instanceof Rook) {
-                                        if (((Rook) clickedPiece).isRosada()) {
-
-                                            fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King).filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
-
-                                        }
-                                    }
 
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
@@ -320,6 +341,18 @@ public class sahFrame extends JFrame {
                                                     }
                                                     ((Rook) clickedPiece).setRosada(false);
                                                     Game.getNextTurnColor();
+                                                    for(ChessPiece ch: pieceList) {
+                                                    	for(Integer k: ch.getPossibleMoves()) {
+                                                    		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                    			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                    				sah = true;
+                                                    			}
+                                                    		}
+                                                    	}
+                                                	}
+                                                
+                                                    	System.out.println("sah :" + sah);
+                                            
                                                 }
                                             }
                                         }
@@ -362,7 +395,24 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
+
                                               //  System.out.println("chess: "+ ChessPiece.checkForChess());
+
+                                                for(ChessPiece ch: pieceList) {
+                                                	for(Integer k: ch.getPossibleMoves()) {
+                                                		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
+                                                			if(((ChessPiece) (sahFrame.getFieldList().get(k).getComponent(0))) instanceof King) {
+                                                				sah = true;
+                                                			}
+                                                		}
+                                                	}
+                                            	}
+                                            
+                                                	System.out.println("sah :" + sah);
+                                        
+                                                
+
+
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -438,8 +488,9 @@ public class sahFrame extends JFrame {
 
             }
         }
+        
 
-
+        }
 
         addPiecesToBoard();
         //setTestPieces();
@@ -544,7 +595,7 @@ public class sahFrame extends JFrame {
             BufferedImage imageKnightBlack = ImageIO.read(fileKnightBlack);
             ImageIcon iconKnightBlack = new ImageIcon(imageKnightBlack);
 
-            for (int i = 0; i < 8; i++) {
+
                 if (j == 0) {
                     Pawn pawn = new Pawn(new Point(i, 1), com.fer.oop.sahprojekt.Color.WHITE);
 
@@ -559,7 +610,7 @@ public class sahFrame extends JFrame {
                     pieceList.add(pawn);
                     fieldList.get(48 + i).add(pawn);
                 }
-            }
+            
             if (j == 0) {
                 Rook rook = new Rook(new Point(0, 0), com.fer.oop.sahprojekt.Color.WHITE);
                 rook.setIcon(iconRookWhite);
@@ -658,8 +709,10 @@ public class sahFrame extends JFrame {
                     pieceList.add(knight);
                     fieldList.get(6+7*8).add(knight);
             }
-
+            
         }
+
+        
 
     }
     
