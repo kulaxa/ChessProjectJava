@@ -5,7 +5,6 @@
  */
 package com.fer.oop.sahprojekt;
 
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -18,21 +17,21 @@ import javax.swing.JLabel;
  *
  * @author mario
  */
-public abstract class ChessPiece extends JLabel implements MouseListener{
+public abstract class ChessPiece extends JLabel implements MouseListener {
+
     private Point position;
     private final Color color;
-    static List<ChessPiece> pieces= new ArrayList<>();
+    static List<ChessPiece> pieces = new ArrayList<>();
     //static List<ChessPiece> piecesWhite= new ArrayList<>();
-    
 
     public ChessPiece(Point position, Color color) {
         this.position = position;
         this.color = color;
-        
+
         pieces.add(this);
-        
+
     }
-   
+
     public Color getColor() {
         return color;
     }
@@ -48,37 +47,35 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
     public static List<ChessPiece> getPieces() {
         return pieces;
     }
-    
-    public boolean checkIfEaten(){
-        
-        for(ChessPiece ch: sahFrame.getPieceList()){
+
+    public boolean checkIfEaten() {
+
+        for (ChessPiece ch : sahFrame.getPieceList()) {
             //if((ch.getPosition().getX() = this.getPosition().getX()) && (ch.getPosition().getY() = this.getPosition().getX()))
-            if(ch.getPosition().equals(this.getPosition()) && ch != this)
-                 return true;
-            
+            if (ch.getPosition().equals(this.getPosition()) && ch != this) {
+                return true;
+            }
+
         }
-        
+
         return false;
     }
-    
-    
-    public List<Integer> getLegalMoves(ChessPiece piece){
-        
+
+    public List<Integer> getLegalMoves(ChessPiece piece) {
+
         List<Integer> listOfMoves = piece.getPossibleMoves();
-        
-        
+
         return listOfMoves;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-       
-   
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -96,92 +93,103 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
     public abstract List<Integer> getPossibleMoves();
-    
-    
-    public static int pointToInt(Point point){
-        
-        if(point.getX() >7 || point.getX() <0)
-            throw new IllegalArgumentException();
-        if(point.getY() >7 || point.getY() < 0)
-            throw  new IllegalArgumentException();
-        return point.getY() *8 + point.getX();
-        
-    }
-    
-    public static Point intToPoint(int num){
-        if(num > 63 || num < 0)
-            throw new IllegalArgumentException();
-        return new Point(num%8, num/8);
-        
-    }
-    
-    
-    public static boolean checkForChess(){
-        Color currentColor = Game.getCurrentColor();
-        
-         boolean result = false;
-        King kingInChess=(King)
-        sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == currentColor).findAny().get();
 
+    public static int pointToInt(Point point) {
 
-       
-        List<ChessPiece>tempList=sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
-        //System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
-        for(ChessPiece piece: tempList){
-            
-            for(Integer in: piece.getPossibleMoves()){
-                
-              
-                
-                
-                if(in == ChessPiece.pointToInt(kingInChess.getPosition()))
-                    result= true;
-            }
-            
+        if (point.getX() > 7 || point.getX() < 0) {
+            throw new IllegalArgumentException();
         }
-        
+        if (point.getY() > 7 || point.getY() < 0) {
+            throw new IllegalArgumentException();
+        }
+        return point.getY() * 8 + point.getX();
+
+    }
+
+    public static Point intToPoint(int num) {
+        if (num > 63 || num < 0) {
+            throw new IllegalArgumentException();
+        }
+        return new Point(num % 8, num / 8);
+
+    }
+
+    public static boolean checkForChess() {
+        Color currentColor = Game.getCurrentColor();
+
+        boolean result = false;
+        King kingInChess = (King) sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == currentColor).findAny().get();
+
+        List<ChessPiece> tempList = sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
+        //System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
+        for (ChessPiece piece : tempList) {
+
+            for (Integer in : piece.getPossibleMoves()) {
+
+                if (in == ChessPiece.pointToInt(kingInChess.getPosition())) {
+                    result = true;
+                }
+            }
+
+        }
+
         return result;
     }
-    
-    
-    public List<Integer> sah(){
-        
+
+    public List<Integer> sah() {
+
         int pos = ChessPiece.pointToInt(position);
-        
+
         List<Integer> goodMoves = new LinkedList<>();
-        
-        List<Integer> moves= getPossibleMoves();
-        
-         
-        
+
+        List<Integer> moves = getPossibleMoves();
+        System.out.println(moves);
+
         moves.stream().forEach(i -> {
-        
-        sahFrame.getFieldList().get(i).add(this);
-        
+
+            if (sahFrame.getFieldList().get(i).getComponents().length != 0 && ((ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != Game.getCurrentColor()) {
+                ChessPiece posEaten = (ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0];
+                
+                sahFrame.getFieldList().get(i).remove(posEaten);
+                sahFrame.getPieceList().remove(posEaten);
+                if (!checkForChess()) {
+                    
+                    goodMoves.add(i);
+
+                }
+                sahFrame.getFieldList().get(i).add(posEaten);
+                sahFrame.getPieceList().add(posEaten);
+
+            }
+            sahFrame.getFieldList().get(i).add(this);
+
             setPosition(ChessPiece.intToPoint(i));
-            
-            
-        
-        
-        
-        
-            
-        if(!checkForChess()){
-            
-            goodMoves.add(i);
-           
-        }
-        sahFrame.getFieldList().get(i).remove(this);
-            
+
+            if (!checkForChess() && !goodMoves.contains(i)) {
+
+                goodMoves.add(i);
+
+            }
+            sahFrame.getFieldList().get(i).remove(this);
+
         });
         sahFrame.getFieldList().get(pos).add(this);
         setPosition(ChessPiece.intToPoint(pos));
-        return goodMoves;
         
+        
+        return goodMoves;
+
     }
     
-    
-    
+    public  static boolean checkForMat(){
+        
+        long possibleMoves= 
+        sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).count();
+        
+        
+        System.out.println("Mat: "+possibleMoves );
+        return possibleMoves ==0;
+    }
+
 }
