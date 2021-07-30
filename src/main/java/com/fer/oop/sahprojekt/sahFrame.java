@@ -161,7 +161,7 @@ public class sahFrame extends JFrame {
                                                 
                                                     	System.out.println("sah :" + sah);
                                             
-                                                }
+                                                
                                             }
                                         }
                                     }
@@ -395,7 +395,6 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
-<<<<<<< HEAD
                                                 for(ChessPiece ch: pieceList) {
                                                 	for(Integer k: ch.getPossibleMoves()) {
                                                 		if(sahFrame.getFieldList().get(k).getComponents().length != 0) {
@@ -408,9 +407,8 @@ public class sahFrame extends JFrame {
                                             
                                                 	System.out.println("sah :" + sah);
                                         
-=======
                                                 System.out.println("chess: "+ ChessPiece.checkForChess());
->>>>>>> newChessBranch
+
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -573,27 +571,7 @@ public class sahFrame extends JFrame {
             BufferedImage imageQueenBlack = ImageIO.read(fileQueenBlack);
             ImageIcon iconQueenBlack = new ImageIcon(imageQueenBlack);
 
-            File fileQueenWhite = new File("queen_white.png");
-            BufferedImage imageQueenWhite = ImageIO.read(fileQueenWhite);
-            ImageIcon iconQueenWhite = new ImageIcon(imageQueenWhite);
 
-            File fileKingBlack = new File("king_black.png");
-            BufferedImage imageKingBlack = ImageIO.read(fileKingBlack);
-            ImageIcon iconKingBlack = new ImageIcon(imageKingBlack);
-
-            File fileKingWhite = new File("king_white.png");
-            BufferedImage imageKingWhite = ImageIO.read(fileKingWhite);
-            ImageIcon iconKingWhite = new ImageIcon(imageKingWhite);
-
-            File fileKnightWhite = new File("knight_white.png");
-            BufferedImage imageKnightWhite = ImageIO.read(fileKnightWhite);
-            ImageIcon iconKnightWhite = new ImageIcon(imageKnightWhite);
-
-            File fileKnightBlack = new File("knight_black.png");
-            BufferedImage imageKnightBlack = ImageIO.read(fileKnightBlack);
-            ImageIcon iconKnightBlack = new ImageIcon(imageKnightBlack);
-
-            for (int i = 0; i < 8; i++) {
                 if (j == 0) {
                     Pawn pawn = new Pawn(new Point(i, 1), com.fer.oop.sahprojekt.Color.WHITE);
 
