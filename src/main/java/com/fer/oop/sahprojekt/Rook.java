@@ -51,16 +51,13 @@ public class Rook extends ChessPiece {
     @Override
     public List<Integer> getPossibleMoves() {
 
-        System.out.println(" ");
         return checkMoves();
     }
 
     private List<Integer> checkMoves() {
 
 
-        System.out.println("CheckMoves");
-        // int position = ChessPiece.pointToInt(this.getPosition());
-
+        
         int left = 0, right = 0, up = 0, down = 0;
 
         boolean switchSide = false;

@@ -213,7 +213,6 @@ public class Queen extends ChessPiece{
             int num = this.getPosition().getY() * 8 + 8 * i + this.getPosition().getX();
             possibleMoves.add(num);
         }
-        possibleMoves.forEach(move -> System.out.print(" " + move));
         
         return possibleMoves;
     }
@@ -243,11 +242,9 @@ public class Queen extends ChessPiece{
 
     @Override
         public void mouseEntered(MouseEvent e) {
-        //System.out.println("42");
     }
 
     @Override
         public void mouseExited(MouseEvent e) { //ovo je komentar
-        //System.out.println("42");
     }
 }

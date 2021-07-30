@@ -362,7 +362,6 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
-                                                System.out.println("chess: "+ ChessPiece.checkForChess());
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -470,14 +469,11 @@ public class sahFrame extends JFrame {
         int numOfEatenPiecesBlack
                 = (int) eatenPiecesList.stream().filter(piece -> piece.getColor() == com.fer.oop.sahprojekt.Color.BLACK).count();
 
-        System.out.println("eaten pieces: white: " + numOfEatenPiecesWhite + " black: " + numOfEatenPiecesBlack);
         if (numOfEatenPiecesBlack != 0) {
             eatenPiecesBlackPanel.setLayout(new GridLayout(0, numOfEatenPiecesWhite / 3 + 1));
-            System.out.println("Setting grid: " + "0 ," + (numOfEatenPiecesWhite / 3 + 1));
         }
         if (numOfEatenPiecesWhite != 0) {
             eatenPiecesWhitePanel.setLayout(new GridLayout(0, numOfEatenPiecesBlack / 3 + 1));
-            System.out.println("Setting grid: " + "0 ," + (numOfEatenPiecesBlack / 3 + 1));
         }
         for (ChessPiece pic : eatenPiecesList) {
             if (pic.getColor() == com.fer.oop.sahprojekt.Color.BLACK) {
