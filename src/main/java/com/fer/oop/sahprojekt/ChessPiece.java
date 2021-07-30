@@ -72,6 +72,7 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+       
    
     }
 
@@ -127,10 +128,12 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
 
        
         List<ChessPiece>tempList=sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
-        System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
+        //System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
         for(ChessPiece piece: tempList){
+            
             for(Integer in: piece.getPossibleMoves()){
-                System.out.print(in+", ");
+                
+              
                 
                 
                 if(in == ChessPiece.pointToInt(kingInChess.getPosition()))
@@ -141,5 +144,44 @@ public abstract class ChessPiece extends JLabel implements MouseListener{
         
         return result;
     }
+    
+    
+    public List<Integer> sah(){
+        
+        int pos = ChessPiece.pointToInt(position);
+        
+        List<Integer> goodMoves = new LinkedList<>();
+        
+        List<Integer> moves= getPossibleMoves();
+        
+         
+        
+        moves.stream().forEach(i -> {
+        
+        sahFrame.getFieldList().get(i).add(this);
+        
+            setPosition(ChessPiece.intToPoint(i));
+            
+            
+        
+        
+        
+        
+            
+        if(!checkForChess()){
+            
+            goodMoves.add(i);
+           
+        }
+        sahFrame.getFieldList().get(i).remove(this);
+            
+        });
+        sahFrame.getFieldList().get(pos).add(this);
+        setPosition(ChessPiece.intToPoint(pos));
+        return goodMoves;
+        
+    }
+    
+    
     
 }

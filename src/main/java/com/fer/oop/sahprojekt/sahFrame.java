@@ -84,6 +84,8 @@ public class sahFrame extends JFrame {
                                     currentPanel = (JPanel) e.getSource();
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
+                                     
+                                   
 
                                     if (clickedPiece instanceof Rook) {
                                         if (((Rook) clickedPiece).isRosada()) {
@@ -111,6 +113,7 @@ public class sahFrame extends JFrame {
 
                                     currentPanel = (JPanel) e.getSource(); //new code
                                     System.out.println("Chess: "+ChessPiece.checkForChess());
+                                    System.out.println(clickedPiece.sah());
 
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
@@ -285,6 +288,7 @@ public class sahFrame extends JFrame {
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
                                     possibleMoves = clickedPiece.getPossibleMoves();
+                                    
                                      if (clickedPiece instanceof Rook) {
                                         if (((Rook) clickedPiece).isRosada()) {
 
@@ -308,7 +312,7 @@ public class sahFrame extends JFrame {
                                     }
                                      
                                      System.out.println("Chess: "+ChessPiece.checkForChess());
-
+                                     System.out.println(clickedPiece.sah());
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
 
