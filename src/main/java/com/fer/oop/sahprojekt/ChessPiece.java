@@ -21,13 +21,8 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
 
     private Point position;
     private final Color color;
-<<<<<<< HEAD
-    private static boolean sah = false;
 
-    static List<ChessPiece> pieces= new ArrayList<>();
-=======
     static List<ChessPiece> pieces = new ArrayList<>();
->>>>>>> newNewChessBranch
     //static List<ChessPiece> piecesWhite= new ArrayList<>();
 
     public ChessPiece(Point position, Color color) {
@@ -37,18 +32,8 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
         pieces.add(this);
 
     }
-<<<<<<< HEAD
-    public static boolean isSah() {
-		return sah;
-	}
 
-	public static void setSah(boolean newSah) {
-		sah = newSah;
-	}
-   
-=======
 
->>>>>>> newNewChessBranch
     public Color getColor() {
         return color;
     }
@@ -134,31 +119,13 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
 
     public static boolean checkForChess() {
         Color currentColor = Game.getCurrentColor();
-<<<<<<< HEAD
-        
-         boolean result = false;
-        King kingInChess=(King)
 
-        sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == currentColor).findAny().get();
-=======
->>>>>>> newNewChessBranch
 
         boolean result = false;
         King kingInChess = (King) sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == currentColor).findAny().get();
 
-<<<<<<< HEAD
        
-        List<ChessPiece>tempList=sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
-        System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
-        for(ChessPiece piece: tempList){
-            for(Integer in: piece.getPossibleMoves()){
         
-                System.out.print(in+", ");
-                
-                
-                if(in == ChessPiece.pointToInt(kingInChess.getPosition()))
-                    result= true;
-=======
         List<ChessPiece> tempList = sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != currentColor).collect(Collectors.toList());
         //System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
         for (ChessPiece piece : tempList) {
@@ -168,7 +135,6 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
                 if (in == ChessPiece.pointToInt(kingInChess.getPosition())) {
                     result = true;
                 }
->>>>>>> newNewChessBranch
             }
 
         }

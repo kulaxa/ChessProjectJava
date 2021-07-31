@@ -406,10 +406,7 @@ public class sahFrame extends JFrame {
                                                 clickedPanel.add(clickedPiece);
 
                                                 Game.getNextTurnColor();
-<<<<<<< HEAD
 
-=======
->>>>>>> newNewChessBranch
 
                                                 clickedPiece.setPosition(ChessPiece.intToPoint(fieldList.indexOf(clickedPanel)));
                                                 clickedPanel.revalidate();
@@ -486,20 +483,10 @@ public class sahFrame extends JFrame {
             }
         }
 
-<<<<<<< HEAD
 
-
-
-        addPiecesToBoard();
-//        setTestPieces();
-
-      
-
-=======
         addPiecesToBoard();
         //setTestPieces();
         //setRosdaPieces();
->>>>>>> newNewChessBranch
 
         eatenPiecesPanel.setLayout(new GridLayout(2, 0));
         eatenPiecesWhitePanel.setBackground(Color.WHITE);
@@ -524,12 +511,8 @@ public class sahFrame extends JFrame {
         int numOfEatenPiecesBlack
                 = (int) eatenPiecesList.stream().filter(piece -> piece.getColor() == com.fer.oop.sahprojekt.Color.BLACK).count();
 
-<<<<<<< HEAD
 
-       // System.out.println("eaten pieces: white: " + numOfEatenPiecesWhite + " black: " + numOfEatenPiecesBlack);
-=======
-        // System.out.println("eaten pieces: white: " + numOfEatenPiecesWhite + " black: " + numOfEatenPiecesBlack);
->>>>>>> newNewChessBranch
+
         if (numOfEatenPiecesBlack != 0) {
             eatenPiecesBlackPanel.setLayout(new GridLayout(0, numOfEatenPiecesWhite / 3 + 1));
             //System.out.println("Setting grid: " + "0 ," + (numOfEatenPiecesWhite / 3 + 1));
@@ -944,32 +927,7 @@ public class sahFrame extends JFrame {
                 fieldList.get(8 * 7 + 4).add(king);
             }
 
-<<<<<<< HEAD
-            if (j == 0) {
-                    Knight knight = new Knight(new Point(1,0), com.fer.oop.sahprojekt.Color.WHITE);
-                    knight.setIcon(iconKnightWhite);
-                    pieceList.add(knight);
-                    fieldList.get(1).add(knight);
-                    
-                     knight = new Knight(new Point(6,0), com.fer.oop.sahprojekt.Color.WHITE);
-                    knight.setIcon(iconKnightWhite);
-                    pieceList.add(knight);
-                    fieldList.get(6).add(knight);
-            }
 
-            if (j == 1) {
-                    Knight knight = new Knight(new Point(1,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    knight.setIcon(iconKnightBlack);
-                    pieceList.add(knight);
-                    fieldList.get(1+7*8).add(knight);
-                    
-                     knight = new Knight(new Point(6,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    knight.setIcon(iconKnightBlack);
-                    pieceList.add(knight);
-                    fieldList.get(6+7*8).add(knight);
-            }
-
-=======
 //            if (j == 0) {
 //                    Knight knight = new Knight(new Point(1,0), com.fer.oop.sahprojekt.Color.WHITE);
 //                    knight.setIcon(iconKnightWhite);
@@ -993,7 +951,6 @@ public class sahFrame extends JFrame {
 //                    pieceList.add(knight);
 //                    fieldList.get(6+7*8).add(knight);
 //            }
->>>>>>> newNewChessBranch
         }
 
     }
