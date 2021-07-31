@@ -77,7 +77,7 @@ public class King extends ChessPiece {
             		}
         			if(j == 0) {
         				((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).setRosada(true);
-        				System.out.println(((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).isRosada());
+        				//System.out.println(((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).isRosada());
         			}
         			
         		}
@@ -96,7 +96,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).setRosada(true);
-            			System.out.println(((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).isRosada());
+            			//System.out.println(((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).isRosada());
         			}
         		}
         		
@@ -113,7 +113,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).setRosada(true);
-            			System.out.println(((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).isRosada());
+            			//System.out.println(((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).isRosada());
         		}
         		
         		
@@ -132,7 +132,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).setRosada(true);
-            			System.out.println(((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).isRosada());
+            			//System.out.println(((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).isRosada());
         		}
         		}
         	}

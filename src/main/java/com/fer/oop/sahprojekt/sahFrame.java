@@ -109,8 +109,8 @@ public class sahFrame extends JFrame {
                                     }
 
                                     currentPanel = (JPanel) e.getSource(); //new code
-                                    System.out.println("Chess: " + ChessPiece.checkForChess());
-                                    System.out.println(clickedPiece.sah());
+//                                    System.out.println("Chess: " + ChessPiece.checkForChess());
+//                                    System.out.println(clickedPiece.sah());
                                     ChessPiece.checkForMat();
 
                                     isPieceSelected = true;
@@ -128,42 +128,57 @@ public class sahFrame extends JFrame {
                                 if (clickedPiece != null && isPieceSelected == true) {
 
                                     clickedPanel = (JPanel) e.getComponent();
+                                    
+                                    
                                     if (clickedPiece instanceof Rook) {
                                         if (clickedPanel.getComponents().length != 0) {
                                             if (clickedPanel.getComponent(0) instanceof King) {
                                                 if (((Rook) clickedPiece).isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
-
+                                                    System.out.println("rosada je true");
                                                     isPieceSelected = false;
 
                                                     Point posi = clickedPiece.getPosition();
                                                     if (clickedPiece.getPosition().getX() == 0) {
-
+                                                         ChessPiece tempKing
+                                                                = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                         if(!((King)tempKing).getAlreadyMoved()){
                                                         fieldList.get(ChessPiece.pointToInt(posi) + 3).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(posi.getX() + 3, posi.getY()));
-                                                        //kriva boja radi rošadu, kriva boja je na potezu nakon rošade
-                                                        ChessPiece tempKing
-                                                                = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                        
+                                                       
                                                         fieldList.get(ChessPiece.pointToInt(posi) + 2).add(tempKing);
                                                         tempKing.setPosition(new Point(tempKing.getPosition().getX() - 2, tempKing.getPosition().getY()));
+                                                        
                                                         if (tempKing instanceof King) {
                                                             ((King) tempKing).setAlreadyMoved(true);
                                                         }
+                                                         }
+                                                        
+                                                        
+                                                        
 
                                                     } else {
-
-                                                        fieldList.get(ChessPiece.pointToInt(clickedPiece.getPosition()) - 2).add(clickedPiece);
-                                                        clickedPiece.setPosition(new Point(posi.getX() - 2, posi.getY()));
                                                         ChessPiece tempKing
                                                                 = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                        if(!((King)tempKing).getAlreadyMoved()){
+                                                        fieldList.get(ChessPiece.pointToInt(clickedPiece.getPosition()) - 2).add(clickedPiece);
+                                                        clickedPiece.setPosition(new Point(posi.getX() - 2, posi.getY()));
+                                                        
                                                         fieldList.get(ChessPiece.pointToInt(tempKing.getPosition()) + 2).add(tempKing);
                                                         tempKing.setPosition(new Point(tempKing.getPosition().getX() + 2, tempKing.getPosition().getY()));
-
-                                                        if (tempKing instanceof King) {
+                                                        
+                                                         if (tempKing instanceof King) {
                                                             ((King) tempKing).setAlreadyMoved(true);
                                                         }
+                                                        
+                                                        }
+                                                       
+                                                        
+                                                        
                                                     }
 
                                                     ((Rook) clickedPiece).setRosada(false);
+                                                    pieceList.stream().filter(pic -> pic.getColor()== Game.getCurrentColor() && pic instanceof Rook).forEach(pic -> ((Rook)pic).setRosada(false));
 
                                                     Game.getNextTurnColor();
 
@@ -171,6 +186,9 @@ public class sahFrame extends JFrame {
                                             }
                                         }
                                     }
+                                    
+                                    //new code
+
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
 
@@ -193,7 +211,7 @@ public class sahFrame extends JFrame {
                                             
 
                                             if (fieldList.indexOf(clickedPanel) == i) {
-                                                System.out.println("Ovaj for bi se trebal izvest samo jednom");
+                                                
                                                 if (clickedPiece instanceof Pawn) {
                                                     Pawn temp = (Pawn) clickedPiece;
                                                     temp.setAlreadyMoved(true);
@@ -311,8 +329,8 @@ public class sahFrame extends JFrame {
 
                                     }
 
-                                    System.out.println("Chess: " + ChessPiece.checkForChess());
-                                    System.out.println(clickedPiece.sah());
+//                                    System.out.println("Chess: " + ChessPiece.checkForChess());
+//                                    System.out.println(clickedPiece.sah());
                                     ChessPiece.checkForMat();
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
@@ -332,41 +350,108 @@ public class sahFrame extends JFrame {
                                         if (clickedPanel.getComponents().length != 0) {
                                             if (clickedPanel.getComponent(0) instanceof King) {
                                                 if (((Rook) clickedPiece).isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
+                                                     System.out.println("rosada je true");
 
                                                     isPieceSelected = false;
 
                                                     Point posi = clickedPiece.getPosition();
                                                     if (clickedPiece.getPosition().getX() == 0) {
-
+                                                        ChessPiece tempKing
+                                                                = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                         if(!((King)tempKing).getAlreadyMoved()){
                                                         fieldList.get(ChessPiece.pointToInt(posi) + 3).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(posi.getX() + 3, posi.getY()));
                                                         //kriva boja radi rošadu, kriva boja je na potezu nakon rošade
-                                                        ChessPiece tempKing
-                                                                = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                        
                                                         fieldList.get(ChessPiece.pointToInt(posi) + 2).add(tempKing);
                                                         tempKing.setPosition(new Point(tempKing.getPosition().getX() - 2, tempKing.getPosition().getY()));
+                                                        
                                                         if (tempKing instanceof King) {
                                                             ((King) tempKing).setAlreadyMoved(true);
                                                         }
+                                                        
+                                                         }
+                                                        
+                                                        
+                                                       
 
                                                     } else {
-
+                                                         ChessPiece tempKing
+                                                                = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                          if(!((King)tempKing).getAlreadyMoved()){
                                                         fieldList.get(ChessPiece.pointToInt(clickedPiece.getPosition()) - 2).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(posi.getX() - 2, posi.getY()));
-                                                        ChessPiece tempKing
-                                                                = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+                                                       
                                                         fieldList.get(ChessPiece.pointToInt(tempKing.getPosition()) + 2).add(tempKing);
-                                                        tempKing.setPosition(new Point(tempKing.getPosition().getX() + 2, tempKing.getY()));
+                                                        tempKing.setPosition(new Point(tempKing.getPosition().getX() + 2, tempKing.getPosition().getY()));
                                                         if (tempKing instanceof King) {
                                                             ((King) tempKing).setAlreadyMoved(true);
                                                         }
+                                                        
+                                                          }
+                                                        
+                                                        
+                                                        
                                                     }
-                                                    ((Rook) clickedPiece).setRosada(false);
+                                                     pieceList.stream().filter(pic -> pic.getColor()== Game.getCurrentColor() && pic instanceof Rook).forEach(pic -> ((Rook)pic).setRosada(false));
+                                                    
+                                                    
+                                                    
+                                                    
                                                     Game.getNextTurnColor();
                                                 }
                                             }
                                         }
                                     }
+                                    
+                                    //new code
+//                                    if (clickedPiece instanceof King) {
+//                                        if (clickedPanel.getComponents().length != 0) {
+//                                            if (clickedPanel.getComponent(0) instanceof Rook) {
+//                                                Rook tempRook = (Rook)clickedPanel.getComponent(0);
+//                                                if (tempRook.isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
+//
+//                                                    isPieceSelected = false;
+//
+//                                                    Point posi = tempRook.getPosition();
+//                                                    System.out.println("Position: "+ posi);
+//                                                    if (tempRook.getPosition().getX() == 0) {
+//
+//                                                        fieldList.get(ChessPiece.pointToInt(posi) + 3).add(tempRook);
+//                                                        tempRook.setPosition(new Point(posi.getX() + 3, posi.getY()));
+//                                                        
+//                                                        //ChessPiece tempKing
+//                                                          //      = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+//                                                        fieldList.get(ChessPiece.pointToInt(posi) + 2).add(clickedPiece);
+//                                                        clickedPiece.setPosition(new Point(clickedPiece.getPosition().getX() - 2, clickedPiece.getPosition().getY()));
+//                                                        if (clickedPiece instanceof King) {
+//                                                            ((King) clickedPiece).setAlreadyMoved(true);
+//                                                        }
+//
+//                                                    } else {
+//
+//                                                        fieldList.get(posi.getX() -2 ).add(tempRook);
+//                                                        tempRook.setPosition(new Point(posi.getX() - 2, posi.getY()));
+//                                                        //ChessPiece tempKing
+//                                                          //      = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
+//                                                        fieldList.get(ChessPiece.pointToInt(clickedPiece.getPosition()) + 2).add(clickedPiece);
+//                                                        clickedPiece.setPosition(new Point(clickedPiece.getPosition().getX() + 2, clickedPiece.getY()));
+//                                                        if (clickedPiece instanceof King) {
+//                                                            ((King) clickedPiece).setAlreadyMoved(true);
+//                                                        }
+//                                                    }
+//                                                    tempRook.setRosada(false);
+//                                                    
+//                                                    
+//                                                    
+//                                                    
+//                                                    Game.getNextTurnColor();
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+                                    
+                                    //new code
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
 
@@ -390,7 +475,7 @@ public class sahFrame extends JFrame {
 //                                             
 
                                             if (fieldList.indexOf(clickedPanel) == i) {
-                                                System.out.println("Ovaj for bi se trebal izvest samo jednom");
+                                                
                                                 if (clickedPiece instanceof Pawn) {
                                                     Pawn temp = (Pawn) clickedPiece;
                                                     temp.setAlreadyMoved(true);
@@ -484,9 +569,9 @@ public class sahFrame extends JFrame {
         }
 
 
-        addPiecesToBoard();
+       // addPiecesToBoard();
         //setTestPieces();
-        //setRosdaPieces();
+        setRosdaPieces();
 
         eatenPiecesPanel.setLayout(new GridLayout(2, 0));
         eatenPiecesWhitePanel.setBackground(Color.WHITE);

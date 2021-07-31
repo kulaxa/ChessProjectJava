@@ -58,7 +58,7 @@ public class Game {
         prevColor= temp;
         
         
-        System.out.println("promijenila se boja");
+        //System.out.println("promijenila se boja");
         
         
         
