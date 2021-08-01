@@ -621,8 +621,8 @@ public class sahFrame extends JFrame {
         }
 
         // addPiecesToBoard();
-        //setTestPieces();
-        setRosdaPieces();
+        setTestPieces();
+      //  setRosdaPieces();
 
         eatenPiecesPanel.setLayout(new GridLayout(2, 0));
         eatenPiecesWhitePanel.setBackground(Color.WHITE);
@@ -668,8 +668,9 @@ public class sahFrame extends JFrame {
     }
 
     private void returnToOriginalColor(Color black, Color brown){
-        //ChessPiece.checkForMat();
-        for(int i=0; i<63;i++){
+        if(ChessPiece.checkForMat())
+        JOptionPane.showMessageDialog(board, "you lose");
+            for(int i=0; i<63;i++){
             
             if (ChessPiece.intToPoint(i).getX() % 2 == 0) {
                                                 if (ChessPiece.intToPoint(i).getY() % 2 != 0) {
@@ -938,6 +939,17 @@ public class sahFrame extends JFrame {
         bishop.setIcon(iconBishopWhite);
         pieceList.add(bishop);
         fieldList.get(4 + 5 * 8).add(bishop);
+        
+        
+        Rook rook = new Rook(new Point(0, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                rook.setIcon(iconRookBlack);
+                pieceList.add(rook);
+                fieldList.get(56 + 0).add(rook);
+
+                rook = new Rook(new Point(7, 7), com.fer.oop.sahprojekt.Color.BLACK);
+                rook.setIcon(iconRookBlack);
+                pieceList.add(rook);
+                fieldList.get(56 + 7).add(rook);
 
     }
 

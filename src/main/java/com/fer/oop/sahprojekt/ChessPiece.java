@@ -184,12 +184,13 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
     
     public  static boolean checkForMat(){
         
-        long possibleMoves= 
-        sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).count();
+      
         
+        List<Integer> possibleMoves = new LinkedList<>();
         
+         sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).forEach(pic -> possibleMoves.addAll(pic.sah()));
         //System.out.println("Mat: "+possibleMoves );
-        return possibleMoves ==0;
+        return possibleMoves.isEmpty();
     }
 
 }
