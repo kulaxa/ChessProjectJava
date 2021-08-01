@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -83,6 +84,7 @@ public class sahFrame extends JFrame {
                                     isPieceSelected = true;
                                     if (ChessPiece.checkForChess()) {
                                         possibleMoves = clickedPiece.sah();
+                                        
                                     } else {
                                         possibleMoves = clickedPiece.getPossibleMoves();
                                     }
@@ -352,6 +354,7 @@ public class sahFrame extends JFrame {
 
                                     if (ChessPiece.checkForChess()) {
                                         possibleMoves = clickedPiece.sah();
+                                        
                                     } else {
                                         possibleMoves = clickedPiece.getPossibleMoves();
                                     }
@@ -376,7 +379,7 @@ public class sahFrame extends JFrame {
 
 //                                    System.out.println("Chess: " + ChessPiece.checkForChess());
 //                                    System.out.println(clickedPiece.sah());
-                                    ChessPiece.checkForMat();
+                                   
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
 
@@ -399,6 +402,7 @@ public class sahFrame extends JFrame {
 
                                                     isPieceSelected = false;
                                                     returnToOriginalColor(Color.BLACK, myBrown);
+                                                    
 
                                                     Point posi = clickedPiece.getPosition();
                                                     if (clickedPiece.getPosition().getX() == 0) {
@@ -451,6 +455,7 @@ public class sahFrame extends JFrame {
 
                                                     isPieceSelected = false;
                                                     returnToOriginalColor(Color.BLACK, myBrown);
+                                                    
 
                                                     Point posi = tempRook.getPosition();
                                                    // System.out.println("Position: " + posi);
@@ -663,6 +668,7 @@ public class sahFrame extends JFrame {
     }
 
     private void returnToOriginalColor(Color black, Color brown){
+        //ChessPiece.checkForMat();
         for(int i=0; i<63;i++){
             
             if (ChessPiece.intToPoint(i).getX() % 2 == 0) {
