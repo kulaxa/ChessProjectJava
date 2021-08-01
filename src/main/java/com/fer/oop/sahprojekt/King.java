@@ -57,7 +57,7 @@ public class King extends ChessPiece {
         List<Integer> lista = List.of(pos + 1, pos - 1, pos + 8, pos - 8, pos - 7, pos + 7, pos + 9, pos - 9);
         List<Point> lista2 = List.of(new Point(1, 0),
                                     new Point(-1, 0),
-                                    new Point(0,+1),
+                                    new Point(0,1),
                                     new Point(0, -1),
                                     new Point(1, 1),
                                     new Point(+1, -1),
@@ -94,7 +94,7 @@ public class King extends ChessPiece {
             if(!isBeyondBounds(pos2, p)){
                 System.out.println("provjera");
                 
-                int i= ChessPiece.pointToInt(p);
+                int i= ChessPiece.pointToInt(pos2) + p.getY()*8 + p.getX();
                 if(sahFrame.getFieldList().get(i).getComponents().length != 0){
                    if( ((ChessPiece)sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != this.getColor())
                        possibleMoves.add(i);
