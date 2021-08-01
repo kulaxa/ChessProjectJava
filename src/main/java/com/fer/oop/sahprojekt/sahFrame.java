@@ -62,7 +62,7 @@ public class sahFrame extends JFrame {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JPanel field = new JPanel();
-
+                
                 field.setSize(40, 40);
                 field.setBackground(myBrown);
 
@@ -134,6 +134,7 @@ public class sahFrame extends JFrame {
                                                 if (((Rook) clickedPiece).isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
                                                     System.out.println("rosada je true");
                                                     isPieceSelected = false;
+                                                    returnToOriginalColor(Color.BLACK, myBrown);
 
                                                     Point posi = clickedPiece.getPosition();
                                                     if (clickedPiece.getPosition().getX() == 0) {
@@ -188,7 +189,7 @@ public class sahFrame extends JFrame {
                                                 if (tempRook.isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
 
                                                     isPieceSelected = false;
-
+                                                    returnToOriginalColor(Color.BLACK, myBrown);
                                                     Point posi = tempRook.getPosition();
                                                     System.out.println("Position: " + posi);
                                                     if (tempRook.getPosition().getX() == 0) {
@@ -286,15 +287,18 @@ public class sahFrame extends JFrame {
 
                                                 }
                                                 isPieceSelected = false;
+                                                returnToOriginalColor(Color.BLACK, myBrown);
 
 //                                          
                                             } else {
                                                 isPieceSelected = false;
+                                                returnToOriginalColor(Color.BLACK, myBrown);
                                             }
 //                                       
                                         }
                                     } else {
                                         isPieceSelected = false;
+                                        returnToOriginalColor(Color.BLACK, myBrown);
                                     }
 
                                 }
@@ -394,6 +398,7 @@ public class sahFrame extends JFrame {
                                                     System.out.println("rosada je true");
 
                                                     isPieceSelected = false;
+                                                    returnToOriginalColor(Color.BLACK, myBrown);
 
                                                     Point posi = clickedPiece.getPosition();
                                                     if (clickedPiece.getPosition().getX() == 0) {
@@ -445,6 +450,7 @@ public class sahFrame extends JFrame {
                                                 if (tempRook.isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
 
                                                     isPieceSelected = false;
+                                                    returnToOriginalColor(Color.BLACK, myBrown);
 
                                                     Point posi = tempRook.getPosition();
                                                     System.out.println("Position: " + posi);
@@ -488,6 +494,8 @@ public class sahFrame extends JFrame {
                                             }
                                         }
                                     }
+                                   
+                                 
                                     //new code
                                     if (!possibleMoves.isEmpty()) {
                                         for (Integer i : possibleMoves) {
@@ -544,14 +552,17 @@ public class sahFrame extends JFrame {
                                                     }
                                                 }
                                                 isPieceSelected = false;
+                                                returnToOriginalColor(Color.BLACK, myBrown);
                                             } else {
                                                 isPieceSelected = false;
+                                                returnToOriginalColor(Color.BLACK, myBrown);
 
                                             }
 
                                         }
                                     } else {
                                         isPieceSelected = false;
+                                        returnToOriginalColor(Color.BLACK, myBrown);
                                     }
 
                                 }
@@ -651,6 +662,26 @@ public class sahFrame extends JFrame {
 
     }
 
+    private void returnToOriginalColor(Color black, Color brown){
+        for(int i=0; i<63;i++){
+            
+            if (ChessPiece.intToPoint(i).getX() % 2 == 0) {
+                                                if (ChessPiece.intToPoint(i).getY() % 2 != 0) {
+                                                    fieldList
+                                                            .get(i).setBackground(brown);
+                                                } else {
+                                                    fieldList.get(i).setBackground(black);
+                                                }
+                                            } else {
+                                                if (ChessPiece.intToPoint(i).getY() % 2 == 0) {
+                                                    fieldList.get(i).setBackground(brown);
+                                                } else {
+                                                    fieldList.get(i).setBackground(black);
+                                                }
+                                            }
+            
+        }
+    }
     private void addPiecesToBoard() throws IOException {
         //add pawns
 
