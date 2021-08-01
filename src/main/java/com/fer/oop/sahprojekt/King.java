@@ -62,7 +62,8 @@ public class King extends ChessPiece {
                                     new Point(1, 1),
                                     new Point(+1, -1),
                                     new Point(-1, 1),
-                                    new Point(-1,1)
+                                    new Point(-1,-1)
+                                  
                 
                 
                 
