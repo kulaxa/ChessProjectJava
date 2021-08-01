@@ -144,7 +144,7 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
         List<Integer> goodMoves = new LinkedList<>();
 
         List<Integer> moves = getPossibleMoves();
-        System.out.println(moves);
+        //System.out.println(moves);
 
         moves.stream().forEach(i -> {
 
@@ -188,7 +188,7 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
         sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).count();
         
         
-        System.out.println("Mat: "+possibleMoves );
+        //System.out.println("Mat: "+possibleMoves );
         return possibleMoves ==0;
     }
 

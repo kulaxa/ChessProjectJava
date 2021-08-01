@@ -50,13 +50,13 @@ public class Rook extends ChessPiece {
 
     @Override
     public List<Integer> getPossibleMoves() {
-        System.out.println(" ");
+       // System.out.println(" ");
         return checkMoves();
     }
 
     private List<Integer> checkMoves() {
 
-        System.out.println("CheckMoves");
+      //  System.out.println("CheckMoves");
         // int position = ChessPiece.pointToInt(this.getPosition());
 
         int left = 0, right = 0, up = 0, down = 0;
@@ -202,7 +202,7 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                                System.out.println("rosada: " + rosada);
+                                //System.out.println("rosada: " + rosada);
                             }
                         }
                     }
@@ -223,7 +223,7 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                                System.out.println("rosada: " + rosada);
+                                //System.out.println("rosada: " + rosada);
                             }
                         }
                     }
@@ -245,7 +245,7 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                                System.out.println("rosada: " + rosada);
+                               // System.out.println("rosada: " + rosada);
                             }
                         }
                     }
@@ -254,7 +254,7 @@ public class Rook extends ChessPiece {
 
         }
 
-        possibleMoves.forEach(move -> System.out.print(" " + move));
+       // possibleMoves.forEach(move -> System.out.print(" " + move));
 
         return possibleMoves;
 

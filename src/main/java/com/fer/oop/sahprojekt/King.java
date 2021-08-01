@@ -53,11 +53,48 @@ public class King extends ChessPiece {
         
         possibleMoves.clear();
         int pos = ChessPiece.pointToInt(this.getPosition());
+        Point pos2 = this.getPosition();
         List<Integer> lista = List.of(pos + 1, pos - 1, pos + 8, pos - 8, pos - 7, pos + 7, pos + 9, pos - 9);
-
-        for (Integer i : lista) {
-            if (i >= 0 && i < 63) {
-
+        List<Point> lista2 = List.of(new Point(1, 0),
+                                    new Point(-1, 0),
+                                    new Point(0,1),
+                                    new Point(0, -1),
+                                    new Point(1, 1),
+                                    new Point(+1, -1),
+                                    new Point(-1, 1),
+                                    new Point(-1,1)
+                
+                
+                
+                
+                
+                );
+        System.out.println("---------------");
+//        for (Integer i : lista) {
+//            
+//            try{
+//               
+//                 if(sahFrame.getFieldList().get(i).getComponents().length != 0){
+//                   if( ((ChessPiece)sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != this.getColor())
+//                       possibleMoves.add(i);
+//                }
+//                else{
+//                    possibleMoves.add(i);
+//                }
+//            }
+//            catch(Exception e){
+//                System.out.println("provjera");};
+//            
+//
+//               
+//            
+//        }
+        for(Point p: lista2){
+            System.out.println(p);
+            if(!isBeyondBounds(pos2, p)){
+                System.out.println("provjera");
+                
+                int i= ChessPiece.pointToInt(pos2) + p.getY()*8 + p.getX();
                 if(sahFrame.getFieldList().get(i).getComponents().length != 0){
                    if( ((ChessPiece)sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != this.getColor())
                        possibleMoves.add(i);
@@ -65,6 +102,7 @@ public class King extends ChessPiece {
                 else{
                     possibleMoves.add(i);
                 }
+                
             }
         }
         if(!alreadyMoved) {
@@ -77,7 +115,7 @@ public class King extends ChessPiece {
             		}
         			if(j == 0) {
         				((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).setRosada(true);
-        				System.out.println(((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).isRosada());
+        				//System.out.println(((Rook) (sahFrame.getFieldList().get(7).getComponent(0))).isRosada());
         			}
         			
         		}
@@ -96,7 +134,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).setRosada(true);
-            			System.out.println(((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).isRosada());
+            			//System.out.println(((Rook) (sahFrame.getFieldList().get(0).getComponent(0))).isRosada());
         			}
         		}
         		
@@ -113,7 +151,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).setRosada(true);
-            			System.out.println(((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).isRosada());
+            			//System.out.println(((Rook) (sahFrame.getFieldList().get(63).getComponent(0))).isRosada());
         		}
         		
         		
@@ -132,7 +170,7 @@ public class King extends ChessPiece {
             		}
             		if(j == 0) {
             			((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).setRosada(true);
-            			System.out.println(((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).isRosada());
+            			//System.out.println(((Rook) (sahFrame.getFieldList().get(56).getComponent(0))).isRosada());
         		}
         		}
         	}
@@ -175,6 +213,17 @@ public class King extends ChessPiece {
         //System.out.println("42");
     }
     
+    
+    private boolean isBeyondBounds(Point knightPoint, Point movePoint){
+        
+        if(knightPoint.getX()+ movePoint.getX() <=7 && knightPoint.getX() + movePoint.getX() >=0 &&
+                knightPoint.getY()+ movePoint.getY() <=7 && knightPoint.getY() + movePoint.getY() >=0){
+           
+            return false;
+        }
+        
+        return true;
+    }
     
     
     //knight- (-17, -6, -10, +6, +10, +17, +15, -15 
