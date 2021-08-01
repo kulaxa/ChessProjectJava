@@ -132,7 +132,7 @@ public class sahFrame extends JFrame {
                                         if (clickedPanel.getComponents().length != 0) {
                                             if (clickedPanel.getComponent(0) instanceof King) {
                                                 if (((Rook) clickedPiece).isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
-                                                    System.out.println("rosada je true");
+                                                    
                                                     isPieceSelected = false;
                                                     returnToOriginalColor(Color.BLACK, myBrown);
 
@@ -191,18 +191,18 @@ public class sahFrame extends JFrame {
                                                     isPieceSelected = false;
                                                     returnToOriginalColor(Color.BLACK, myBrown);
                                                     Point posi = tempRook.getPosition();
-                                                    System.out.println("Position: " + posi);
+                                                    
                                                     if (tempRook.getPosition().getX() == 0) {
 
                                                         fieldList.get(posi.getX() +3+ posi.getY()*8).add(tempRook);
                                                         tempRook.setPosition(new Point(posi.getX() + 3, posi.getY()));
-                                                         System.out.println("Setting position for rook: "+ (posi.getX() +3)+", " + posi.getY());
+                                                         
 
                                                         //ChessPiece tempKing
                                                         //      = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
                                                         fieldList.get(ChessPiece.pointToInt(posi) + 2).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(clickedPiece.getPosition().getX() - 2, clickedPiece.getPosition().getY()));
-                                                         System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() - 2)+", " + clickedPiece.getPosition().getY());
+                                                         //System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() - 2)+", " + clickedPiece.getPosition().getY());
                                                         if (clickedPiece instanceof King) {
                                                             ((King) clickedPiece).setAlreadyMoved(true);
                                                         }
@@ -211,11 +211,11 @@ public class sahFrame extends JFrame {
 
                                                         fieldList.get(posi.getX() - 2+ posi.getY()*8).add(tempRook);
                                                         tempRook.setPosition(new Point(posi.getX() - 2, posi.getY()));
-                                                        System.out.println("Setting position for rook: "+ (posi.getX() -2)+", " + posi.getY());
+                                                        
                                                         //ChessPiece tempKing
                                                         //      = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
-                                                        System.out.println("Position of black king: "+ clickedPiece.getPosition());
-                                                        System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() + 2)+", " + clickedPiece.getPosition().getY());
+                                                       //System.out.println("Position of black king: "+ clickedPiece.getPosition());
+                                                       // System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() + 2)+", " + clickedPiece.getPosition().getY());
                                                         fieldList.get(ChessPiece.pointToInt(clickedPiece.getPosition()) + 2).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(clickedPiece.getPosition().getX() + 2, clickedPiece.getPosition().getY()));
                                                          
@@ -395,7 +395,7 @@ public class sahFrame extends JFrame {
                                         if (clickedPanel.getComponents().length != 0) {
                                             if (clickedPanel.getComponent(0) instanceof King) {
                                                 if (((Rook) clickedPiece).isRosada() && clickedPiece.getColor() == Game.getCurrentColor()) {
-                                                    System.out.println("rosada je true");
+                                                    //System.out.println("rosada je true");
 
                                                     isPieceSelected = false;
                                                     returnToOriginalColor(Color.BLACK, myBrown);
@@ -453,19 +453,19 @@ public class sahFrame extends JFrame {
                                                     returnToOriginalColor(Color.BLACK, myBrown);
 
                                                     Point posi = tempRook.getPosition();
-                                                    System.out.println("Position: " + posi);
+                                                   // System.out.println("Position: " + posi);
                                                     if (tempRook.getPosition().getX() == 0) {
 
                                                         fieldList.get(posi.getX() +3+ posi.getY()*8).add(tempRook);
                                                         tempRook.setPosition(new Point(posi.getX() + 3, posi.getY()));
-                                                         System.out.println("Setting position for rook: "+ (posi.getX() +3)+", " + posi.getY());
+                                                         //System.out.println("Setting position for rook: "+ (posi.getX() +3)+", " + posi.getY());
 
                                                         //ChessPiece tempKing
                                                         //      = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();
                                                         
                                                         fieldList.get(ChessPiece.pointToInt(posi) + 2).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(clickedPiece.getPosition().getX() - 2, clickedPiece.getPosition().getY()));
-                                                         System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() - 2)+", " + clickedPiece.getPosition().getY());
+                                                        // System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() - 2)+", " + clickedPiece.getPosition().getY());
                                                         if (clickedPiece instanceof King) {
                                                             ((King) clickedPiece).setAlreadyMoved(true);
                                                         }
@@ -474,11 +474,11 @@ public class sahFrame extends JFrame {
 
                                                         fieldList.get(posi.getX() - 2+ posi.getY()*8).add(tempRook);
                                                         tempRook.setPosition(new Point(posi.getX() - 2, posi.getY()));
-                                                        System.out.println("Setting position for rook: "+ (posi.getX() -2)+", " + posi.getY());
+                                                        
                                                         //ChessPiece tempKing
                                                         //      = pieceList.stream().filter(pic -> pic instanceof King).filter(pic -> pic.getColor() == Game.getCurrentColor()).findAny().get();1
-                                                         System.out.println("Position of brown king: "+ clickedPiece.getPosition());
-                                                         System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() + 2)+", " + clickedPiece.getPosition().getY());
+                                                        // System.out.println("Position of brown king: "+ clickedPiece.getPosition());
+                                                         //System.out.println("Setting position for king: "+ (clickedPiece.getPosition().getX() + 2)+", " + clickedPiece.getPosition().getY());
                                                         fieldList.get(ChessPiece.pointToInt(clickedPiece.getPosition()) + 2).add(clickedPiece);
                                                         clickedPiece.setPosition(new Point(clickedPiece.getPosition().getX() + 2, clickedPiece.getPosition().getY()));
                                                          

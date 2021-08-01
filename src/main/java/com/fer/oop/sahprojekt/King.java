@@ -70,7 +70,7 @@ public class King extends ChessPiece {
                 
                 
                 );
-        System.out.println("---------------");
+        //System.out.println("---------------");
 //        for (Integer i : lista) {
 //            
 //            try{
@@ -91,9 +91,9 @@ public class King extends ChessPiece {
 //            
 //        }
         for(Point p: lista2){
-            System.out.println(p);
+            //System.out.println(p);
             if(!isBeyondBounds(pos2, p)){
-                System.out.println("provjera");
+                //System.out.println("provjera");
                 
                 int i= ChessPiece.pointToInt(pos2) + p.getY()*8 + p.getX();
                 if(sahFrame.getFieldList().get(i).getComponents().length != 0){

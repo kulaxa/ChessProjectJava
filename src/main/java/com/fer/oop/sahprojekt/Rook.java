@@ -179,7 +179,7 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                                System.out.println("rosada: " + rosada);
+                              // System.out.println("rosada: " + rosada);
                             }
 
                         }
