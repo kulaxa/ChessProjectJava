@@ -8,6 +8,7 @@ package com.fer.oop.sahprojekt;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -150,11 +151,11 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
 
             if (sahFrame.getFieldList().get(i).getComponents().length != 0 && ((ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != Game.getCurrentColor()) {
                 ChessPiece posEaten = (ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0];
-                
+
                 sahFrame.getFieldList().get(i).remove(posEaten);
                 sahFrame.getPieceList().remove(posEaten);
                 if (!checkForChess()) {
-                    
+
                     goodMoves.add(i);
 
                 }
@@ -176,21 +177,100 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
         });
         sahFrame.getFieldList().get(pos).add(this);
         setPosition(ChessPiece.intToPoint(pos));
-        
-        
+
         return goodMoves;
 
     }
+
+//    public static boolean checkForMat() {
+//
+//        List<Integer> possibleMoves = new LinkedList<>();
+//
+//            List<ChessPiece> sameColor =   sahFrame.getPieceList().stream().filter(pic -> pic.getColor() == Game.getCurrentColor()).collect(Collectors.toList());
+//            
+//            if(!sameColor.isEmpty()){
+//                System.out.println("not empty");
+//                
+//            for(int i=0; i<sameColor.size(); i++){
+//                System.out.println(possibleMoves.get(i).getClass());
+//                
+//                possibleMoves.addAll(sameColor.get(i).sah());
+//                
+//            }}
+//            
+////        sahFrame.getPieceList().stream().filter(pic -> pic.getColor() == Game.getCurrentColor()).forEach(
+////                pic -> {
+////                    List<Integer> picMoves = pic.sah();
+////                    System.out.println("moves: "+ picMoves);
+////                    possibleMoves.addAll(picMoves);
+////                             
+////                }
+//    
+//
+////    );
+//         
+//        
+//
+//        //System.out.println("Mat: "+possibleMoves );
+//        //possibleMoves.isEmpty ();
+//        return possibleMoves.isEmpty ();
+//}
     
-    public  static boolean checkForMat(){
-        
-      
-        
-        List<Integer> possibleMoves = new LinkedList<>();
-        
-         sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).forEach(pic -> possibleMoves.addAll(pic.sah()));
-        //System.out.println("Mat: "+possibleMoves );
-        return possibleMoves.isEmpty();
-    }
+    
+//    public  boolean checkForMat(){
+//        
+//        
+//        
+//        
+//        List<Integer> lista = new LinkedList<>();
+//        //sahFrame.getPieceList().stream().forEach(pic -> lista.addAll(pic.getPossibleMoves()));
+//       
+//      List<Integer> goodMoves = new LinkedList<>();
+//      
+//      
+//           List<ChessPiece> lista2 = sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).collect(Collectors.toList());
+//        for(int i=0; i< lista2.size(); i++){
+//            lista.addAll(lista2.get(i).getPossibleMoves());
+//        }
+//        
+////           int pos = ChessPiece.pointToInt(position);
+////        
+////        lista.stream().forEach(i -> {
+////
+////            if (sahFrame.getFieldList().get(i).getComponents().length != 0 && ((ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != Game.getCurrentColor()) {
+////                ChessPiece posEaten = (ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0];
+////
+////                sahFrame.getFieldList().get(i).remove(posEaten);
+////                sahFrame.getPieceList().remove(posEaten);
+////                if (!checkForChess()) {
+////
+////                    goodMoves.add(i);
+////
+////                }
+////                sahFrame.getFieldList().get(i).add(posEaten);
+////                sahFrame.getPieceList().add(posEaten);
+////
+////            }
+////            sahFrame.getFieldList().get(i).add(this);
+////
+////            setPosition(ChessPiece.intToPoint(i));
+////
+////            if (!checkForChess() && !goodMoves.contains(i)) {
+////
+////                goodMoves.add(i);
+////
+////            }
+////            sahFrame.getFieldList().get(i).remove(this);
+////
+////        });
+////        
+////        sahFrame.getFieldList().get(pos).add(this);
+////        setPosition(ChessPiece.intToPoint(pos));
+////        
+//     
+//                System.out.println(goodMoves);
+//                return false;
+//        
+//    }
 
 }
