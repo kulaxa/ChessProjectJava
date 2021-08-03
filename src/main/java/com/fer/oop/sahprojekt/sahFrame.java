@@ -958,21 +958,21 @@ public class sahFrame extends JFrame {
             BufferedImage imageRookBlack = ImageIO.read(filerookBlack);
             ImageIcon iconRookBlack = new ImageIcon(imageRookBlack);
 
-            File fileBishopWhite = new File("bishop_white.png");
-            BufferedImage imageBishopWhite = ImageIO.read(fileBishopWhite);
-            ImageIcon iconBishopWhite = new ImageIcon(imageBishopWhite);
+//            File fileBishopWhite = new File("bishop_white.png");
+//            BufferedImage imageBishopWhite = ImageIO.read(fileBishopWhite);
+//            ImageIcon iconBishopWhite = new ImageIcon(imageBishopWhite);
+//
+//            File fileBishopBlack = new File("bishop_black.png");
+//            BufferedImage imageBishopBlack = ImageIO.read(fileBishopBlack);
+//            ImageIcon iconBishopBlack = new ImageIcon(imageBishopBlack);
 
-            File fileBishopBlack = new File("bishop_black.png");
-            BufferedImage imageBishopBlack = ImageIO.read(fileBishopBlack);
-            ImageIcon iconBishopBlack = new ImageIcon(imageBishopBlack);
-
-            File fileQueenBlack = new File("queen_black.png");
-            BufferedImage imageQueenBlack = ImageIO.read(fileQueenBlack);
-            ImageIcon iconQueenBlack = new ImageIcon(imageQueenBlack);
-
-            File fileQueenWhite = new File("queen_white.png");
-            BufferedImage imageQueenWhite = ImageIO.read(fileQueenWhite);
-            ImageIcon iconQueenWhite = new ImageIcon(imageQueenWhite);
+//            File fileQueenBlack = new File("queen_black.png");
+//            BufferedImage imageQueenBlack = ImageIO.read(fileQueenBlack);
+//            ImageIcon iconQueenBlack = new ImageIcon(imageQueenBlack);
+//
+//            File fileQueenWhite = new File("queen_white.png");
+//            BufferedImage imageQueenWhite = ImageIO.read(fileQueenWhite);
+//            ImageIcon iconQueenWhite = new ImageIcon(imageQueenWhite);
 
             File fileKingBlack = new File("king_black.png");
             BufferedImage imageKingBlack = ImageIO.read(fileKingBlack);
@@ -982,13 +982,13 @@ public class sahFrame extends JFrame {
             BufferedImage imageKingWhite = ImageIO.read(fileKingWhite);
             ImageIcon iconKingWhite = new ImageIcon(imageKingWhite);
 
-            File fileKnightWhite = new File("knight_white.png");
-            BufferedImage imageKnightWhite = ImageIO.read(fileKnightWhite);
-            ImageIcon iconKnightWhite = new ImageIcon(imageKnightWhite);
-
-            File fileKnightBlack = new File("knight_black.png");
-            BufferedImage imageKnightBlack = ImageIO.read(fileKnightBlack);
-            ImageIcon iconKnightBlack = new ImageIcon(imageKnightBlack);
+//            File fileKnightWhite = new File("knight_white.png");
+//            BufferedImage imageKnightWhite = ImageIO.read(fileKnightWhite);
+//            ImageIcon iconKnightWhite = new ImageIcon(imageKnightWhite);
+//
+//            File fileKnightBlack = new File("knight_black.png");
+//            BufferedImage imageKnightBlack = ImageIO.read(fileKnightBlack);
+//            ImageIcon iconKnightBlack = new ImageIcon(imageKnightBlack);
 
             for (int i = 0; i < 8; i++) {
                 if (j == 0) {
@@ -1029,43 +1029,43 @@ public class sahFrame extends JFrame {
                 pieceList.add(rook);
                 fieldList.get(56 + 7).add(rook);
             }
-            if (j == 0) {
-                    Bishop bishop = new Bishop(new Point(2,0), com.fer.oop.sahprojekt.Color.WHITE);
-                    bishop.setIcon(iconBishopWhite);
-                    pieceList.add(bishop);
-                    fieldList.get(2).add(bishop);
-                    
-                     bishop = new Bishop(new Point(5,0), com.fer.oop.sahprojekt.Color.WHITE);
-                    bishop.setIcon(iconBishopWhite);
-                    pieceList.add(bishop);
-                    fieldList.get(5).add(bishop);
+//            if (j == 0) {
+//                    Bishop bishop = new Bishop(new Point(2,0), com.fer.oop.sahprojekt.Color.WHITE);
+//                    bishop.setIcon(iconBishopWhite);
+//                    pieceList.add(bishop);
+//                    fieldList.get(2).add(bishop);
+//                    
+//                     bishop = new Bishop(new Point(5,0), com.fer.oop.sahprojekt.Color.WHITE);
+//                    bishop.setIcon(iconBishopWhite);
+//                    pieceList.add(bishop);
+//                    fieldList.get(5).add(bishop);
+//
+//            }
+//            if (j == 1) {
+//                     Bishop bishop = new Bishop(new Point(2,7), com.fer.oop.sahprojekt.Color.BLACK);
+//                    bishop.setIcon(iconBishopBlack);
+//                    pieceList.add(bishop);
+//                    fieldList.get(7*8+2).add(bishop);
+//                    
+//                     bishop = new Bishop(new Point(5,7), com.fer.oop.sahprojekt.Color.BLACK);
+//                    bishop.setIcon(iconBishopBlack);
+//                    pieceList.add(bishop);
+//                    fieldList.get(7*8+5).add(bishop);
+//            }
 
-            }
-            if (j == 1) {
-                     Bishop bishop = new Bishop(new Point(2,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    bishop.setIcon(iconBishopBlack);
-                    pieceList.add(bishop);
-                    fieldList.get(7*8+2).add(bishop);
-                    
-                     bishop = new Bishop(new Point(5,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    bishop.setIcon(iconBishopBlack);
-                    pieceList.add(bishop);
-                    fieldList.get(7*8+5).add(bishop);
-            }
-
-            if (j == 0) {
-
-                    Queen queen = new Queen(new Point(3,0), com.fer.oop.sahprojekt.Color.WHITE);
-                    queen.setIcon(iconQueenWhite);
-                    pieceList.add(queen);
-                    fieldList.get(3).add(queen);
-            }
-            if (j == 1) {
-                     Queen queen = new Queen(new Point(3,7), com.fer.oop.sahprojekt.Color.BLACK);
-                    queen.setIcon(iconQueenBlack);
-                    pieceList.add(queen);
-                    fieldList.get(8*7 +3).add(queen);
-            }
+//            if (j == 0) {
+//
+//                    Queen queen = new Queen(new Point(3,0), com.fer.oop.sahprojekt.Color.WHITE);
+//                    queen.setIcon(iconQueenWhite);
+//                    pieceList.add(queen);
+//                    fieldList.get(3).add(queen);
+//            }
+//            if (j == 1) {
+//                     Queen queen = new Queen(new Point(3,7), com.fer.oop.sahprojekt.Color.BLACK);
+//                    queen.setIcon(iconQueenBlack);
+//                    pieceList.add(queen);
+//                    fieldList.get(8*7 +3).add(queen);
+//            }
             if (j == 0) {
 
                 King king = new King(new Point(4, 0), com.fer.oop.sahprojekt.Color.WHITE);
