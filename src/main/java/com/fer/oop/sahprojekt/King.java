@@ -69,10 +69,14 @@ public class King extends ChessPiece {
                 int i = ChessPiece.pointToInt(pos2) + p.getY() * 8 + p.getX();
                 if (sahFrame.getFieldList().get(i).getComponents().length != 0) {
                     if (((ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != this.getColor()) {
-                        possibleMoves.add(i);
+                        if (!checkIfKingInMat(p)) {
+                            possibleMoves.add(i);
+                        }
                     }
                 } else {
-                    possibleMoves.add(i);
+                    if (!checkIfKingInMat(p)) {
+                        possibleMoves.add(i);
+                    }
                 }
             }
         }
@@ -189,6 +193,53 @@ public class King extends ChessPiece {
         }
 
         return true;
+    }
+
+    private boolean checkIfKingInMat(Point p) {
+
+        boolean kingInMat = false;
+        Point currentPos = this.getPosition();
+        Point nextPosiblePos = Point.addTwoPoints(currentPos, p);
+        int i = ChessPiece.pointToInt(nextPosiblePos);
+        ChessPiece posEaten = null;
+        if (sahFrame.getFieldList().get(i).getComponents().length != 0 && ((ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0]).getColor() != Game.getCurrentColor()) {
+            posEaten = (ChessPiece) sahFrame.getFieldList().get(i).getComponents()[0];
+            sahFrame.getFieldList().get(ChessPiece.pointToInt(nextPosiblePos)).remove(posEaten);
+            sahFrame.getPieceList().remove(posEaten);
+
+        }
+        this.setPosition(nextPosiblePos);
+        sahFrame.getFieldList().get(ChessPiece.pointToInt(nextPosiblePos)).add(this);
+        sahFrame.getFieldList().get(ChessPiece.pointToInt(currentPos)).remove(this);
+//        if(checkForChess()){
+//            kingInMat = true;
+//        }
+        if (this.getColor() == Game.getCurrentColor()) {
+            List<ChessPiece> tempList = sahFrame.getPieceList().stream().filter(pic -> pic.getColor() != Game.getCurrentColor()).collect(Collectors.toList());
+            //System.out.println("King position: "+pointToInt(kingInChess.getPosition()));
+            for (ChessPiece piece : tempList) {
+
+                for (Integer in : piece.getPossibleMoves()) {
+
+                    if (in == ChessPiece.pointToInt(nextPosiblePos)) {
+                        System.out.println("remvoing king move: " + p);
+                        kingInMat = true;
+                    }
+                }
+
+            }
+        }
+        this.setPosition(currentPos);
+        sahFrame.getFieldList().get(ChessPiece.pointToInt(currentPos)).add(this);
+        sahFrame.getFieldList().get(ChessPiece.pointToInt(nextPosiblePos)).remove(this);
+
+        if (posEaten != null) {
+            sahFrame.getFieldList().get(ChessPiece.pointToInt(nextPosiblePos)).add(posEaten);
+            sahFrame.getPieceList().add(posEaten);
+        }
+
+        return kingInMat;
+
     }
 
 }

@@ -139,13 +139,14 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
     }
 
     public List<Integer> sah() {
+        
 
         int pos = ChessPiece.pointToInt(position);
 
         List<Integer> goodMoves = new LinkedList<>();
 
         List<Integer> moves = getPossibleMoves();
-        //System.out.println(moves);
+      
 
         moves.stream().forEach(i -> {
 
@@ -154,6 +155,11 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
 
                 sahFrame.getFieldList().get(i).remove(posEaten);
                 sahFrame.getPieceList().remove(posEaten);
+                
+               sahFrame.getFieldList().get(i).add(this);
+               setPosition(ChessPiece.intToPoint(i));
+               
+                sahFrame.getFieldList().get(i).remove(this);
                 if (!checkForChess()) {
 
                     goodMoves.add(i);
@@ -164,7 +170,6 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
 
             }
             sahFrame.getFieldList().get(i).add(this);
-
             setPosition(ChessPiece.intToPoint(i));
 
             if (!checkForChess() && !goodMoves.contains(i)) {
@@ -172,7 +177,7 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
                 goodMoves.add(i);
 
             }
-            sahFrame.getFieldList().get(i).remove(this);
+           sahFrame.getFieldList().get(i).remove(this);
 
         });
         sahFrame.getFieldList().get(pos).add(this);

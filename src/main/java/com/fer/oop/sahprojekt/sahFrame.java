@@ -85,7 +85,7 @@ public class sahFrame extends JFrame {
 
                                     currentPanel = (JPanel) e.getSource();
                                     isPieceSelected = true;
-                                    if (ChessPiece.checkForChess()) {
+                                    if (ChessPiece.checkForChess() ) { //&& !(clickedPiece instanceof King)
                                         possibleMoves = clickedPiece.sah();
 
                                     } else {
@@ -303,6 +303,7 @@ public class sahFrame extends JFrame {
                                         returnToOriginalColor(Color.BLACK, myBrown, clickedPiece);
                                     }
                                     checkForMat();
+                                    returnToOriginalColor(Color.BLACK, myBrown, clickedPiece);
 
                                 }
 
@@ -353,7 +354,7 @@ public class sahFrame extends JFrame {
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
 
-                                    if (ChessPiece.checkForChess()) {
+                                    if (ChessPiece.checkForChess()  ) { //&& !(clickedPiece instanceof King)
                                         possibleMoves = clickedPiece.sah();
 
                                     } else {
@@ -568,6 +569,8 @@ public class sahFrame extends JFrame {
 
                                 }
                                 checkForMat();
+                                returnToOriginalColor(Color.BLACK, myBrown, clickedPiece);
+                                
                             }
                             for (JPanel fl : fieldList) {
                                 fl.revalidate();
@@ -617,9 +620,9 @@ public class sahFrame extends JFrame {
             }
         }
 
-        addPiecesToBoard();
+        //addPiecesToBoard();
         //setTestPieces();
-        //  setRosdaPieces();
+          setRosdaPieces();
 
         eatenPiecesPanel.setLayout(new GridLayout(2, 0));
         eatenPiecesWhitePanel.setBackground(Color.WHITE);
