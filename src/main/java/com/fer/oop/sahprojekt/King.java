@@ -41,6 +41,13 @@ public class King extends ChessPiece {
     public void setAlreadyMoved(boolean alreadyMoved) {
         this.alreadyMoved = alreadyMoved;
     }
+    
+    
+    @Override
+    public void setPosition(Point point){
+        super.setPosition(point);
+        
+    }
 
     @Override
     public List<Integer> getPossibleMoves() {

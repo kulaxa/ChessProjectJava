@@ -134,7 +134,7 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
             }
 
         }
-
+        
         return result;
     }
 
@@ -182,6 +182,7 @@ public abstract class ChessPiece extends JLabel implements MouseListener {
         });
         sahFrame.getFieldList().get(pos).add(this);
         setPosition(ChessPiece.intToPoint(pos));
+        //sahFrame.thisFrame.repaint();
 
         return goodMoves;
 

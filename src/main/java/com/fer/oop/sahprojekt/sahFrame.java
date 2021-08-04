@@ -54,6 +54,7 @@ public class sahFrame extends JFrame {
     private List<Integer> possibleMoves;
     private boolean isPieceSelected = false;
     private boolean isMat = false;
+    public static JFrame thisFrame;
 
     public static List<JPanel> getFieldList() {
         return fieldList;
@@ -80,6 +81,7 @@ public class sahFrame extends JFrame {
                         public void mouseClicked(MouseEvent e) {
                             if ((((JPanel) e.getSource()).getComponents().length != 0) && isPieceSelected == false) {
                                 clickedPiece = (ChessPiece) (((JPanel) e.getSource()).getComponents()[0]);
+                                returnToOriginalColor(Color.black, myBrown, clickedPiece);
 
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
 
@@ -94,7 +96,7 @@ public class sahFrame extends JFrame {
 
                                     if (clickedPiece instanceof Rook) {
                                         if (((Rook) clickedPiece).isRosada()) {
-
+                                            
                                             fieldList.get(ChessPiece.pointToInt((pieceList.stream().filter(piece -> piece instanceof King)
                                                     .filter(piece -> piece.getColor() == Game.getCurrentColor()).findFirst()).get().getPosition())).setBackground(Color.GREEN);
 
@@ -128,6 +130,7 @@ public class sahFrame extends JFrame {
                                 }
 
                             } else {
+                              
                                 if (clickedPiece != null && isPieceSelected == true) {
 
                                     clickedPanel = (JPanel) e.getComponent();
@@ -270,6 +273,9 @@ public class sahFrame extends JFrame {
                                                 }
 
                                                 clickedPanel.add(clickedPiece);
+                                                if(clickedPiece instanceof King){
+                                                    ((King)clickedPiece).setAlreadyMoved(true);
+                                                }
 
                                                 Game.getNextTurnColor();
 
@@ -350,6 +356,7 @@ public class sahFrame extends JFrame {
 
                             if ((((JPanel) e.getSource()).getComponents().length != 0) && isPieceSelected == false) {
                                 clickedPiece = (ChessPiece) (((JPanel) e.getSource()).getComponents()[0]);
+                                 returnToOriginalColor(Color.black, myBrown, clickedPiece);
 
                                 if (clickedPiece.getColor() == Game.getCurrentColor()) {
                                     isPieceSelected = true;
@@ -536,6 +543,9 @@ public class sahFrame extends JFrame {
                                                     temp.setAlreadyMoved(true);
                                                 }
                                                 clickedPanel.add(clickedPiece);
+                                                if(clickedPiece instanceof King){
+                                                    ((King)clickedPiece).setAlreadyMoved(true);
+                                                }
 
                                                 Game.getNextTurnColor();
 
@@ -619,7 +629,7 @@ public class sahFrame extends JFrame {
 
             }
         }
-
+        thisFrame = this;
         //addPiecesToBoard();
         //setTestPieces();
           setRosdaPieces();
@@ -636,10 +646,11 @@ public class sahFrame extends JFrame {
         JButton button1 = new JButton("Test button");
         button1.addActionListener(lis -> {
 
-            Worker worker = new Worker();
-            worker.execute();
-            System.out.println("bok");
-
+            pieceList.stream().filter(pic -> pic instanceof Rook).forEach(pic -> {
+            
+               // System.out.println("rosada for rook: "+ pic.getPosition()+ " : "+ ((Rook)pic).isRosada());
+                 returnToOriginalColor(Color.black, myBrown, clickedPiece);
+            });
         });
         add(button1, BorderLayout.SOUTH);
         add(eatenPiecesPanel, BorderLayout.EAST);
@@ -677,6 +688,7 @@ public class sahFrame extends JFrame {
     }
 
     private class Worker extends SwingWorker<Boolean, List<Integer>> {
+         Color myBrown = new Color(191, 152, 90);
 
         private List<Integer> lista = new ArrayList<>();
         private List<ChessPiece> listOfTempPieces = new ArrayList<>();
@@ -689,6 +701,7 @@ public class sahFrame extends JFrame {
             for (ChessPiece pic : listOfTempPieces) {
 
                 publish(pic.sah());
+                board.repaint();
 
             }
 
@@ -726,7 +739,7 @@ public class sahFrame extends JFrame {
         // JOptionPane.showMessageDialog(board, "you lose");
 
         //  System.out.println(worker.get());
-        for (int i = 0; i < 63; i++) {
+        for (int i = 0; i < 64; i++) {
 
             if (ChessPiece.intToPoint(i).getX() % 2 == 0) {
                 if (ChessPiece.intToPoint(i).getY() % 2 != 0) {
@@ -745,6 +758,8 @@ public class sahFrame extends JFrame {
 
         }
     }
+    
+    
 
     private void addPiecesToBoard() throws IOException {
         //add pawns

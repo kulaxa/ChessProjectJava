@@ -50,15 +50,14 @@ public class Rook extends ChessPiece {
 
     @Override
     public List<Integer> getPossibleMoves() {
-       // System.out.println(" ");
+        // System.out.println(" ");
         return checkMoves();
     }
 
     private List<Integer> checkMoves() {
 
-      //  System.out.println("CheckMoves");
+        //  System.out.println("CheckMoves");
         // int position = ChessPiece.pointToInt(this.getPosition());
-
         int left = 0, right = 0, up = 0, down = 0;
 
         boolean switchSide = false;
@@ -165,12 +164,14 @@ public class Rook extends ChessPiece {
             possibleMoves.add(num);
         }
         //System.out.print("rook possible move: ");
-
+        
         if (!alreadyMoved) {
             if (ChessPiece.pointToInt(this.getPosition()) == 0) {
-                if (sahFrame.getFieldList().get(4).getComponents().length != 0) {
-                    if (sahFrame.getFieldList().get(4).getComponents()[0] instanceof King) {
-                        if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
+                //if (sahFrame.getFieldList().get(4).getComponents().length != 0) {
+                   // if (sahFrame.getFieldList().get(4).getComponents()[0] instanceof King) {
+                        //if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) { 
+                        if (!((King) sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == Game.getCurrentColor()).findAny().get()).getAlreadyMoved()) {
+                            
                             int j = 0;
                             for (int i = 1; i < 4; i++) {
                                 if (sahFrame.getFieldList().get(i).getComponents().length != 0) {
@@ -179,21 +180,28 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                              // System.out.println("rosada: " + rosada);
+                              //  System.out.println("rosada: " + rosada);
                             }
 
-                        }
-                    }
+                   //     }
+                   // }
                 }
+                        else{
+                            rosada = false;
+                            //System.out.println("setting rosada false");
+                        }
 
             }
 
         }
+        
         if (!alreadyMoved) {
             if (ChessPiece.pointToInt(this.getPosition()) == 7) {
-                if (sahFrame.getFieldList().get(4).getComponents().length != 0) {
-                    if (sahFrame.getFieldList().get(4).getComponents()[0] instanceof King) {
-                        if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
+               // if (sahFrame.getFieldList().get(4).getComponents().length != 0) {
+                  //  if (sahFrame.getFieldList().get(4).getComponents()[0] instanceof King) {
+                        // if (!((King) (sahFrame.getFieldList().get(4).getComponent(0))).getAlreadyMoved()) {
+                        if (!((King) sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == Game.getCurrentColor()).findAny().get()).getAlreadyMoved()) {
+                            
                             int j = 0;
                             for (int i = 6; i > 4; i--) {
                                 if (sahFrame.getFieldList().get(i).getComponents().length != 0) {
@@ -202,19 +210,25 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                                //System.out.println("rosada: " + rosada);
-                            }
-                        }
+                               // System.out.println("rosada: " + rosada);
+                            //}
+                       // }
                     }
                 }
+                        else{
+                            rosada = false;
+                            //System.out.println("setting rosada false");
+                        }
             }
 
         }
         if (!alreadyMoved) {
             if (ChessPiece.pointToInt(this.getPosition()) == 56) {
-                if (sahFrame.getFieldList().get(60).getComponents().length != 0) {
-                    if (sahFrame.getFieldList().get(60).getComponents()[0] instanceof King) {
-                        if (!((King) (sahFrame.getFieldList().get(60).getComponent(0))).getAlreadyMoved()) {
+               // if (sahFrame.getFieldList().get(60).getComponents().length != 0) {
+                   // if (sahFrame.getFieldList().get(60).getComponents()[0] instanceof King) {
+                      //  if (!((King) (sahFrame.getFieldList().get(60).getComponent(0))).getAlreadyMoved()) {
+                      if(!((King)sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == Game.getCurrentColor() ).findAny().get()).getAlreadyMoved()){
+                          
                             int j = 0;
                             for (int i = 57; i < 60; i++) {
                                 if (sahFrame.getFieldList().get(i).getComponents().length != 0) {
@@ -223,19 +237,25 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                                //System.out.println("rosada: " + rosada);
-                            }
-                        }
+                               // System.out.println("rosada: " + rosada);
+                           // }
+                      //  }
                     }
                 }
+                      else{
+                            rosada = false;
+                            //System.out.println("setting rosada false");
+                        }
 
             }
         }
         if (!alreadyMoved) {
             if (ChessPiece.pointToInt(this.getPosition()) == 63) {
-                if (sahFrame.getFieldList().get(60).getComponents().length != 0) {
-                    if (sahFrame.getFieldList().get(60).getComponents()[0] instanceof King) {
-                        if (!((King) (sahFrame.getFieldList().get(60).getComponent(0))).getAlreadyMoved()) {
+               // if (sahFrame.getFieldList().get(60).getComponents().length != 0) {
+                    //if (sahFrame.getFieldList().get(60).getComponents()[0] instanceof King) {
+                        //if (!((King) (sahFrame.getFieldList().get(60).getComponent(0))).getAlreadyMoved()) {
+                        if(!((King)sahFrame.getPieceList().stream().filter(pic -> pic instanceof King && pic.getColor() == Game.getCurrentColor() ).findAny().get()).getAlreadyMoved()){
+                            
 
                             int j = 0;
                             for (int i = 62; i > 60; i--) {
@@ -245,20 +265,25 @@ public class Rook extends ChessPiece {
                             }
                             if (j == 0) {
                                 rosada = true;
-                               // System.out.println("rosada: " + rosada);
-                            }
-                        }
+                                //System.out.println("rosada: " + rosada);
+                           // }
+                      //  }
                     }
                 }
+                        else{
+                            //System.out.println("setting rosada false");
+                            rosada = false;
+                        }
             }
 
         }
+        
 
-       // possibleMoves.forEach(move -> System.out.print(" " + move));
-
+        // possibleMoves.forEach(move -> System.out.print(" " + move));
         return possibleMoves;
 
     }
+    
 
     @Override
     public void mouseClicked(MouseEvent e) {
