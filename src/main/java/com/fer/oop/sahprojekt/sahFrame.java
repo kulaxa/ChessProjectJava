@@ -699,9 +699,10 @@ public class sahFrame extends JFrame {
                     = pieceList.stream().filter(pic -> pic.getColor() == Game.getCurrentColor()).collect(Collectors.toList());
 
             for (ChessPiece pic : listOfTempPieces) {
-
+                pic.setVisible(false);
                 publish(pic.sah());
-                board.repaint();
+                pic.setVisible(true);
+               board.repaint();
 
             }
 
